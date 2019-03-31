@@ -26,8 +26,11 @@ public class BookSearchService implements SearchService {
         JSONArray items = jsonObject.getJSONArray("items");
 
         List<SearchResult> searchResults = new ArrayList<>();
-        SearchResult searchResult = toSearchResult(items.getJSONObject(0));
-        searchResults.add(searchResult);
+        for (int i = 0; i < items.length(); i++) {
+            SearchResult searchResult = toSearchResult(items.getJSONObject(i));
+            searchResults.add(searchResult);
+        }
+
         return searchResults;
     }
 
@@ -36,17 +39,22 @@ public class BookSearchService implements SearchService {
     }
 
     private SearchResult toSearchResult(JSONObject item) {
+        SearchResultBuilder searchResultBuilder = new SearchResultBuilder();
+
         JSONObject volumeInfo = item.getJSONObject("volumeInfo");
         JSONArray authors = volumeInfo.getJSONArray("authors");
         String author = authors.getString(0);
         String title = volumeInfo.getString("title");
-        String publisher = volumeInfo.getString("publisher");
-        JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-        String thumbnail = imageLinks.getString("thumbnail");
+        String publisher = volumeInfo.optString("publisher", "");
+        JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+        if (imageLinks != null) {
+            String thumbnail = imageLinks.getString("thumbnail");
+            searchResultBuilder.setThumbnail(thumbnail);
+        }
         String previewLink = volumeInfo.getString("previewLink");
 
-        return new SearchResultBuilder().
-                setAuthor(author).setTitle(title).setPublisher(publisher).setThumbnail(thumbnail).setLink(previewLink).createSearchResult();
+        searchResultBuilder.setAuthor(author).setTitle(title).setPublisher(publisher).setLink(previewLink);
+        return searchResultBuilder.createSearchResult();
     }
 
 }
