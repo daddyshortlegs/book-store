@@ -46,16 +46,18 @@ public class BookStoreTest {
 
     @Test
     public void shouldHandleSearchRequest_andReturnSomeResults() {
-        String author = "Michael Feathers";
-        String title = "Working Effectively With Legacy Code";
-        String publisher = "Prentice Hall";
-        String thumbnail = "http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api";
-        String link = "http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api";
-        SearchResult searchResult = new SearchResult(author, title, publisher, thumbnail, link);
+        SearchResult searchResult = new SearchResultBuilder().
+                setAuthor("Michael Feathers").
+                setTitle("Working Effectively With Legacy Code").
+                setPublisher("Prentice Hall").
+                setThumbnail("http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api").
+                setLink("http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api").
+                createSearchResult();
+
         List<SearchResult> searchResults = new ArrayList<>();
         searchResults.add(searchResult);
-
         when(searchService.search("clean code")).thenReturn(searchResult);
+
         ModelAndView modelAndView = bookStore.search("clean code");
 
         assertEquals("searchResults", modelAndView.getViewName());
