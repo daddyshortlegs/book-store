@@ -1,6 +1,5 @@
 package com.andy.books;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.sql.DataSource;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -45,9 +45,14 @@ public class BookStore {
     if (query.isEmpty())
       return new ModelAndView("index");
 
-    searchService.search(query);
+    SearchResult search = searchService.search(query);
 
-    return new ModelAndView("searchResults");
+    List<SearchResult> searchResults = new ArrayList<>();
+    searchResults.add(search);
+
+    ModelAndView modelAndView = new ModelAndView("searchResults");
+    modelAndView.addObject("results", searchResults);
+    return modelAndView;
 
   }
 }
