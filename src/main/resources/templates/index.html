@@ -9,12 +9,14 @@
   </div>
 </div>
 <div class="container">
-  <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Enter title here" aria-label="Search books" aria-describedby="button-addon2">
-      <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search books</button>
-      </div>
-  </div>
+    <form action="/search">
+        <div class="input-group mb-3">
+            <input name="q" type="text" class="form-control" placeholder="Enter title here" aria-label="Search books" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search books</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
