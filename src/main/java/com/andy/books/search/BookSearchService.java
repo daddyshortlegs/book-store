@@ -21,36 +21,31 @@ public class BookSearchService implements SearchService {
     public List<SearchResult> search(String query) {
         String response = httpConnector.get("https://www.googleapis.com/books/v1/volumes?q=legacy+code");
 
-        JSONTokener tokener = new JSONTokener(response);
-        JSONObject jsonObject = new JSONObject(tokener);
+        JSONObject jsonObject = toJsonObject(response);
+        JSONArray items = jsonObject.getJSONArray("items");
 
         List<SearchResult> searchResults = new ArrayList<>();
-
-
-        JSONArray items = jsonObject.getJSONArray("items");
-        JSONObject item1 = items.getJSONObject(0);
-
-
-        JSONObject volumeInfo = item1.getJSONObject("volumeInfo");
-
-        JSONArray authors = volumeInfo.getJSONArray("authors");
-        String author1 = authors.getString(0);
-
-        String title = volumeInfo.getString("title");
-
-        String publisher = volumeInfo.getString("publisher");
-
-        JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
-        String thumbnail = imageLinks.getString("thumbnail");
-
-        String previewLink = volumeInfo.getString("previewLink");
-
-        SearchResult searchResult = new SearchResultBuilder().
-                setAuthor(author1).setTitle(title).setPublisher(publisher).setThumbnail(thumbnail).setLink(previewLink).createSearchResult();
-
-
+        SearchResult searchResult = toSearchResult(items.getJSONObject(0));
         searchResults.add(searchResult);
-
         return searchResults;
     }
+
+    private JSONObject toJsonObject(String response) {
+        return new JSONObject(new JSONTokener(response));
+    }
+
+    private SearchResult toSearchResult(JSONObject item1) {
+        JSONObject volumeInfo = item1.getJSONObject("volumeInfo");
+        JSONArray authors = volumeInfo.getJSONArray("authors");
+        String author1 = authors.getString(0);
+        String title = volumeInfo.getString("title");
+        String publisher = volumeInfo.getString("publisher");
+        JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+        String thumbnail = imageLinks.getString("thumbnail");
+        String previewLink = volumeInfo.getString("previewLink");
+
+        return new SearchResultBuilder().
+                setAuthor(author1).setTitle(title).setPublisher(publisher).setThumbnail(thumbnail).setLink(previewLink).createSearchResult();
+    }
+
 }
