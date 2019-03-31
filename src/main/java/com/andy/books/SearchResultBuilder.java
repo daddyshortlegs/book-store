@@ -1,38 +1,38 @@
 package com.andy.books;
 
-class SearchResultBuilder {
+public class SearchResultBuilder {
     private String author;
     private String title;
     private String publisher;
     private String thumbnail;
     private String link;
 
-    SearchResultBuilder setAuthor(String author) {
+    public SearchResultBuilder setAuthor(String author) {
         this.author = author;
         return this;
     }
 
-    SearchResultBuilder setTitle(String title) {
+    public SearchResultBuilder setTitle(String title) {
         this.title = title;
         return this;
     }
 
-    SearchResultBuilder setPublisher(String publisher) {
+    public SearchResultBuilder setPublisher(String publisher) {
         this.publisher = publisher;
         return this;
     }
 
-    SearchResultBuilder setThumbnail(String thumbnail) {
+    public SearchResultBuilder setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
         return this;
     }
 
-    SearchResultBuilder setLink(String link) {
+    public SearchResultBuilder setLink(String link) {
         this.link = link;
         return this;
     }
 
-    SearchResult createSearchResult() {
+    public SearchResult createSearchResult() {
         return new SearchResult(author, title, publisher, thumbnail, link);
     }
 }

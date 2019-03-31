@@ -1,0 +1,829 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 1441,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "fB6s_Z6g0gIC",
+      "etag": "Okc/StkAP7A",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/fB6s_Z6g0gIC",
+      "volumeInfo": {
+        "title": "Working Effectively with Legacy Code",
+        "authors": [
+          "Michael Feathers"
+        ],
+        "publisher": "Prentice Hall Professional",
+        "publishedDate": "2004-09-22",
+        "description": "Get more out of your legacy systems: more performance, functionality, reliability, and manageability Is your code easy to change? Can you get nearly instantaneous feedback when you do change it? Do you understand it? If the answer to any of these questions is no, you have legacy code, and it is draining time and money away from your development efforts. In this book, Michael Feathers offers start-to-finish strategies for working more effectively with large, untested legacy code bases. This book draws on material Michael created for his renowned Object Mentor seminars: techniques Michael has used in mentoring to help hundreds of developers, technical managers, and testers bring their legacy systems under control. The topics covered include Understanding the mechanics of software change: adding features, fixing bugs, improving design, optimizing performance Getting legacy code into a test harness Writing tests that protect you against introducing new problems Techniques that can be used with any language or platform—with examples in Java, C++, C, and C# Accurately identifying where code changes need to be made Coping with legacy systems that aren't object-oriented Handling applications that don't seem to have any structure This book also includes a catalog of twenty-four dependency-breaking techniques that help you work with program elements in isolation and make safer changes.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780132931755"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0132931753"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 456,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 4.5,
+        "ratingsCount": 5,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.7.4.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=fB6s_Z6g0gIC&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-fB6s_Z6g0gIC"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 28.99,
+          "currencyCode": "GBP"
+        },
+        "retailPrice": {
+          "amount": 28.99,
+          "currencyCode": "GBP"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=fB6s_Z6g0gIC&rdid=book-fB6s_Z6g0gIC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 2.899E7,
+              "currencyCode": "GBP"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.899E7,
+              "currencyCode": "GBP"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=fB6s_Z6g0gIC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "In this book, Michael Feathers offers start-to-finish strategies for working more effectively with large, untested legacy code bases."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "vlo_nWophSYC",
+      "etag": "gM4WrFmSphw",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/vlo_nWophSYC",
+      "volumeInfo": {
+        "title": "Working Effectively with Legacy Code",
+        "authors": [
+          "Michael C. Feathers"
+        ],
+        "publisher": "Prentice Hall",
+        "publishedDate": "2004",
+        "description": "Preface Do you remember the first program you wrote? I remember mine. It was a little graphics program I wrote on an early PC. I started programming later than most of my friends. Sure, I'd seen computers when I was a kid. I remember being really impressed by a minicomputer I once saw in an office, but for years I never had a chance to even sit at a computer. Later, when I was a teenager, some friends of mine bought a couple of the first TRS-80s. I was interested, but I was actually a bit apprehensive, too. I knew that if I started to play with computers, I'd get sucked into it. It just looked too cool. I don't know why I knew myself so well, but I held back. Later, in college, a roommate of mine had a computer, and I bought a C compiler so that I could teach myself programming. Then it began. I stayed up night after night trying things out, poring through the source code of the emacs editor that came with the compiler. It was addictive, it was challenging, and I loved it. I hope you've had experiences like thismdjust the raw joy of making things work on a computer. Nearly every programmer I ask has. That joy is part of what got us into this work, but where is it day to day? A few years ago, I gave my friend Erik Meade a call after I'd finished work one night. I knew that Erik had just started a consulting gig with a new team, so I asked him, \"How are they doing?\" He said, \"They're writing legacy code, man.\" That was one of the few times in my life when I was sucker-punched by a coworker's statement. I felt it right in my gut. Erik had given words to the precise feeling that I often get when I visit teams for the first time. They are trying very hard, but at the end of the day, because of schedule pressure, the weight of history, or a lack of any better code to compare their efforts to, many people are writing legacy code. What is legacy code? I've used the term without defining it. Let's look at the strict definition: Legacy code is code that we've gotten from someone else. Maybe our company acquired code from another company; maybe people on the original team moved on to other projects. Legacy code is somebody else's code. But in programmer-speak, the term means much more than that. The termlegacy codehas taken on more shades of meaning and more weight over time. What do you think about when you hear the termlegacy code? If you are at all like me, you think of tangled, unintelligible structure, code that you have to change but don't really understand. You think of sleepless nights trying to add in features that should be easy to add, and you think of demoralization, the sense that everyone on the team is so sick of a code base that it seems beyond care, the sort of code that you just wish would die. Part of you feels bad for even thinking about making it better. It seems unworthy of your efforts. That definition of legacy code has nothing to do with who wrote it. Code can degrade in many ways, and many of them have nothing to do with whether the code came from another team. In the industry,legacy codeis often used as a slang term for difficult-to-change code that we don't understand. But over years of working with teams, helping them get past serious code problems, I've arrived at a different definition. To me,legacy codeis simply code without tests. I've gotten some grief for this definition. What do tests have to do with whether code is bad? To me, the answer is straightforward, and it is a point that I elaborate throughout the book: Code without tests is bad code. It doesn't matter how well written it is; it doesn't matter how pretty or object-oriented or well-encapsulated it is. With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don't know if our code is getting better or worse. You might think that this is severe. What about clean code? If a code base is very clean and well structured, isn't that enough? Well, make no mistake. I love clean code. I love it more than most people I know, but while clean code is good, it's not enough. Teams take serious chances when they try to make large changes without tests. It is like doing aerial gymnastics without a net. It requires incredible skill and a clear understanding of what can happen at every step. Knowing precisely what will happen if you change a couple of variables is often like knowing whether another gymnast is going to catch your arms after you come out of a somersault. If you are on a team with code that clear, you are in a better position than most programmers. In my work, I've noticed that teams with that degree of clarity in all of their code are rare. They seem like a statistical anomaly. And, you know what? If they don't have supporting tests, their code changes still appear to be slower than those of teams that do. Yes, teams do get better and start to write clearer code, but it takes a long time for older code to get clearer. In many cases, it will never happen completely. Because of this, I have no problem defining legacy code as code without tests. It is a good working definition, and it points to a solution. I've been talking about tests quite a bit so far, but this book is not about testing. This book is about being able to confidently make changes in any code base. In the following chapters, I describe techniques that you can use to understand code, get it under test, refactor it, and add features. One thing that you will notice as you read this book is that it is not a book about pretty code. The examples that I use in the book are fabricated because I work under nondisclosure agreements with clients. But in many of the examples, I've tried to preserve the spirit of code that I've seen in the field. I won't say that the examples are always representative. There certainly are oases of great code out there, but, frankly, there are also pieces of code that are far worse than anything I can use as an example in this book. Aside from client confidentiality, I simply couldn't put code like that in this book without boring you to tears and burying important points in a morass of detail. As a result, many of the examples are relatively brief. If you look at one of them and think \"No, he doesn't understandmdmy methods are much larger than that and much worse,\" please look at the advice that I am giving at face value and see if it applies, even if the example seems simpler. The techniques here have been tested on substantially large pieces of code. It is just a limitation of the book format that makes examples smaller. In particular, when you see ellipses (el) in a code fragment like this, you can read them as \"insert 500 lines of ugly code here\": m_pDispatcher-\u003eregister(listener);...m_nMargins++; If this book is not about pretty code, it is even less about pretty design. Good design should be a goal for all of us, but in legacy code, it is something that we arrive at in discrete steps. In some of the chapters, I describe ways of adding new code to existing code bases and show how to add it with good design principles in mind. You can start to grow areas of very good high-quality code in legacy code bases, but don't be surprised if some of the steps you take to make changes involve making some code slightly uglier. This work is like surgery. We have to make incisions, and we have to move through the guts and suspend some aesthetic judgment. Could this patient's major organs and viscera be better than they are? Yes. So do we just forget about his immediate problem, sew him up again, and tell him to eat right and train for a marathon? We could, but what we really need to do is take the patient as he is, fix what's wrong, and move him to a healthier state. He might never become an Olympic athlete, but we can't let \"best\" be the enemy of \"better.\" Code bases can become healthier and easier to work in. When a patient feels a little better, often that is the time when you can help him make commitments to a healthier life style. That is what we are shooting for with legacy code. We are trying to get to the point at which we are used to ease; we expect it and actively attempt to make code change easier. When we can sustain that sense on a team, design gets better. The techniques I describe are ones that I've discovered and learned with coworkers and clients over the course of years working with clients to try to establish control over unruly code bases. I got into this legacy code emphasis accidentally. When I first started working with Object Mentor, the bulk of my work involved helping teams with serious problems develop their skills and interactions to the point that they could regularly deliver quality code. We often used Extreme Programming practices to help teams take control of their work, collaborate intensively, and deliver. I often feel that Extreme Programming is less a way to develop software than it is a way to make a well-jelled work team that just happens to deliver great software every two weeks. From the beginning, though, there was a problem. Many of the first XP projects were \"greenfield\" projects. The clients I was seeing had significantly large code bases, and they were in trouble. They needed some way to get control of their work and start to deliver. Over time, I found that I was doing the same things over and over again with clients. This sense culminated in some work I was doing with a team in the financial industry. Before I'd arrived, they'd realized that unit testing was a great thing, but the tests that they were executing were full scenario tests that made multiple trips to a database and exercised large chunks of code. The tests were hard to write, and the team didn't run them very often because they took so long to run. As I sat down with them to break dependencies and get smaller chunks of code under test, I had a terrible sense of deasjaag vu. It seemed that I was doing this sort of work with every team I met, and it was the sort of thing that no one really wanted to think about. It was just the grunge work that you do when you want to start working with your code in a controlled way, if you know how to do it. I decided then that it was worth really reflecting on how we were solving these problems and writing them down so that teams could get a leg up and start to make their code bases easier to live in. A note about the examples: I've used examples in several different programming languages. The bulk of the examples are written in Java, C++, and C. I picked Java because it is a very common language, and I included C++ because it presents some special challenges in a legacy environment. I picked C because it highlights many of the problems that come up in procedural legacy code. Among them, these languages cover much of the spectrum of concerns that arise in legacy code. However, if the languages you using are not covered in the examples, take a look at them anyway. Many of the techniques that I cover can be used in other languages, such as Delphi, Visual Basic, COBOL, and FORTRAN. I hope that you find the techniques in this book helpful and that they allow you to get back to what is fun about programming. Programming can be very rewarding and enjoyable work. If you don't feel that in your day-to-day work, I hope that the techniques I offer you in this book help you find it and grow it on your team. Acknowledgements First of all, I owe a serious debt to my wife, Ann, and my children, Deborah and Ryan. Their love and support made this book and all of the learning that preceded it possible. I'd also like to thank \"Uncle Bob\" Martin, president and founder of Object Mentor. His rigorous pragmatic approach to development and design, separating the critical from the inconsequential, gave me something to latch upon about 10 years ago, back when it seemed that I was about to drown in a wave of unrealistic advice. And thanks, Bob, for giving me the opportunity to see more code and work with more people over the past five years than I ever imagined possible. I also have to thank Kent Beck, Ron Jeffries, and Ward Cunningham for offering me advice at times and teaching me a great deal about team work, design, and programming. Special thanks to all of the people who reviewed the drafts. The official reviewers were Sven Gorts, Robert C. Martin, Erik Meade, and Bill Wake; the unofficial reviewers were Dr. Robert Koss, James Grenning, Lowell Lindstrom, Micah Martin, Russ Rufer and the Silicon Valley Patterns Group, and James Newkirk. Thanks also to reviewers of the very early drafts I placed on the Internet. Their feedback significantly affected the direction of the book after I reorganized its format. I apologize in advance to any of you I may have left out. The early reviewers were: Darren Hobbs, Martin Lippert, Keith Nicholas, Phlip Plumlee, C. Keith Ray, Robert Blum, Bill Burris, William Caputo, Brian Marick, Steve Freeman, David Putman, Emily Bache, Dave Astels, Russel Hill, Christian Sepulveda, and Brian Christopher Robinson. Thanks also to Joshua Kerievsky who gave a key early review and Jeff Langr who helped with advice and spot reviews all through the process. The reviewers helped me polish the draft considerably, but if there are errors remaining, they are solely mine. Thanks to Martin Fowler, Ralph Johnson, Bill Opdyke, Don Roberts, and John Brant for their work in the area of refactoring. It has been inspirational. I also owe a special debt to Jay Packlick, Jacques Morel, and Kelly Mower of Sabre Holdings, and Graham Wright of Workshare Technology for their support and feedback. Special thanks also to Paul Petralia, Michelle Vincenti, Lori Lyons, Krista Hansing, and the rest of the team at Prentice-Hall. Thank you, Paul, for all of the help and encouragement that this first-time author needed. Special thanks also to Gary and Joan Feathers, April Roberts, Dr. Raimund Ege, David Lopez de Quintana, Carlos Perez, Carlos M. Rodriguez, and the late Dr. John C. Comfort for help and encouragement over the years.I also have to thank to Brian Button for the example in Chapter XX,I'm Changing the Same Code All Over the Place. He wrote that code in about an hour when we were developing a refactoring course together, and it's become my favorite piece of teaching code. Also, special thanks to Janik Top, whose instrumentalDe Futuraserved as the soundtrack for my last few weeks of work on this book. Finally, I'd like to thank everyone whom I've worked with over the past few years whose insights and challenges strengthened the material in this book. Michael Feathers mfeathers@objectmentor.com © Copyright Pearson Education. All rights reserved.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780131177055"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0131177052"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 434,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 4.0,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=vlo_nWophSYC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=vlo_nWophSYC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=vlo_nWophSYC&q=legacy+code&dq=legacy+code&hl=&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.co.uk/books?id=vlo_nWophSYC&dq=legacy+code&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Working_Effectively_with_Legacy_Code.html?hl=&id=vlo_nWophSYC"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=vlo_nWophSYC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "In this book, Michael Feathers offers start-to-finish strategies for working more effectively with large, untested legacy code bases."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "nyONTwPudakC",
+      "etag": "8fxtAke3NHk",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/nyONTwPudakC",
+      "volumeInfo": {
+        "title": "Working Effectively With Legacy Code",
+        "authors": [
+          "Feathers"
+        ],
+        "publisher": "Pearson Education India",
+        "publishedDate": "2005-09-01",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "8131715078"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9788131715079"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 456,
+        "printType": "BOOK",
+        "averageRating": 4.5,
+        "ratingsCount": 4,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=nyONTwPudakC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=nyONTwPudakC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=nyONTwPudakC&dq=legacy+code&hl=&cd=3&source=gbs_api",
+        "infoLink": "http://books.google.co.uk/books?id=nyONTwPudakC&dq=legacy+code&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Working_Effectively_With_Legacy_Code.html?hl=&id=nyONTwPudakC"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=nyONTwPudakC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "uTnXtAEACAAJ",
+      "etag": "8o8fQx1lV14",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/uTnXtAEACAAJ",
+      "volumeInfo": {
+        "title": "The Legacy Code",
+        "subtitle": "Modern Man's Guide to Escape Obscurity and Live a Life Unleashed",
+        "authors": [
+          "Armando Cruz"
+        ],
+        "publishedDate": "2017-08-23",
+        "description": "Purposefully & Powerfully Create A Legacy That Inspires!Imagine you entered into a car race. Your car has 8-cylinders but you were only using 2-cylinders. What are your chances of winning the race? Not very high. Most men live their lives not having a vision that inspires them nor a purpose that drives them. That's like walking around with an 8-cylinder potential but living a 2-cylinder life. The Legacy Code was written to help guide men to access and live out their full potential and create a legacy that inspires them and those around them. It helps teach men how to actively design and execute the impact and connection needed through specific daily actions. The Legacy Code teaches through stories of the authors life and engaging exercises to help you create your unique code using the simple 5-step process: Awareness, Vision, Purpose, Process, and Implementation. In the book Armando walks you through each of these steps sharing personal stories of struggle, triumph, and revelation to help you better grasp the concepts. The other thing that becomes apparent as you read through the many stories in this book is how influential Armando's father was in helping him become the man he is today. In essence you get the satisfaction of being part of a book that honors his father in the most reverent way.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "1978015151"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9781978015159"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 214,
+        "printType": "BOOK",
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=uTnXtAEACAAJ&dq=legacy+code&hl=&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.co.uk/books?id=uTnXtAEACAAJ&dq=legacy+code&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/The_Legacy_Code.html?hl=&id=uTnXtAEACAAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=uTnXtAEACAAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "The other thing that becomes apparent as you read through the many stories in this book is how influential Armando&#39;s father was in helping him become the man he is today."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "3V1_AAAAQBAJ",
+      "etag": "tTiORRHavMM",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/3V1_AAAAQBAJ",
+      "volumeInfo": {
+        "title": "Perl Medic",
+        "subtitle": "Transforming Legacy Code",
+        "authors": [
+          "Peter Scott"
+        ],
+        "publisher": "Addison-Wesley",
+        "publishedDate": "2013-08-22",
+        "description": "Bring new power, performance, and scalability to your existing Perl code! Cure whatever ails your Perl code! Maintain, optimize, and scale any Perl software... whether you wrote it or not Perl software engineering best practices for enterprise environments Includes case studies and code in a fun-to-read format Today's Perl developers spend 60-80% of their time working with existing Perl code. Now, there's a start-to-finish guide to understanding that code, maintaining it, updating it, and refactoring it for maximum performance and reliability. Peter J. Scott, lead author of Perl Debugged, has written the first systematic guide to Perl software engineering. Through extensive examples, he shows how to bring powerful discipline, consistency, and structure to any Perl program-new or old. You'll discover how to: Scale existing Perl code to serve larger network, Web, enterprise, or e-commerce applications Rewrite, restructure, and upgrade any Perl program for improved performance Bring standards and best practices to your entire library of Perl software Organize Perl code into modules and components that are easier to reuse Upgrade code written for earlier versions of Perl Write and execute better tests for your software...or anyone else's Use Perl in team-based, methodology-driven environments Document your Perl code more effectively and efficiently If you've ever inherited Perl code that's hard to maintain, if you write Perl code others will read, if you want to write code that'll be easier for you to maintain, the book that comes to your rescue is Perl Medic. If you code in Perl, you need to read this book.–Adam Turoff, Technical Editor, The Perl Review. Perl Medic is more than a book. It is a well-crafted strategy for approaching, updating, and furthering the cause of inherited Perl programs.–Allen Wyke, co-author of several computer books including JavaScript Unleashed and Pure JavaScript. Scott's explanations of complex material are smooth and deceptively simple. He knows his subject matter and his craft-he makes it look easy. Scott remains relentless practical-even the 'Analysis' chapter is filled with code and tests to run.–Dan Livingston, author of several computer books including Advanced Flash 5: Actionscript in Action",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780133599954"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0133599957"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 334,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.2.1.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=3V1_AAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=3V1_AAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=3V1_AAAAQBAJ&printsec=frontcover&dq=legacy+code&hl=&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=3V1_AAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-3V1_AAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 17.99,
+          "currencyCode": "GBP"
+        },
+        "retailPrice": {
+          "amount": 11.69,
+          "currencyCode": "GBP"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=3V1_AAAAQBAJ&rdid=book-3V1_AAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 1.799E7,
+              "currencyCode": "GBP"
+            },
+            "retailPrice": {
+              "amountInMicros": 1.169E7,
+              "currencyCode": "GBP"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=3V1_AAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "If you code in Perl, you need to read this book.–Adam Turoff, Technical Editor, The Perl Review. Perl Medic is more than a book."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "sACocjjEr4YC",
+      "etag": "wKvbkscpQo0",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/sACocjjEr4YC",
+      "volumeInfo": {
+        "title": "Software Exorcism",
+        "authors": [
+          "Bill Blunden"
+        ],
+        "publisher": "Apress",
+        "publishedDate": "2013-03-25",
+        "description": "YOU HAVE TO OWN THIS BOOK! Software Exorcism: A Handbook for Debugging and Optimizing Legacy Code takes an unflinching, no bulls$&# look at behavioral problems in the software engineering industry, shedding much-needed light on the social forces that make it difficult for programmers to do their job. Do you have a co-worker who perpetually writes bad code that you are forced to clean up? This is your book. While there are plenty of books on the market that cover debugging and short-term workarounds for bad code, Reverend Bill Blunden takes a revolutionary step beyond them by bringing our attention to the underlying illnesses that plague the software industry as a whole. Further, Software Exorcism discusses tools and techniques for effective and aggressive debugging, gives optimization strategies that appeal to all levels of programmers, and presents in-depth treatments of technical issues with honest assessments that are not biased toward proprietary solutions.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781430251088"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1430251085"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 376,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.3.1.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=sACocjjEr4YC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=sACocjjEr4YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=sACocjjEr4YC&printsec=frontcover&dq=legacy+code&hl=&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=sACocjjEr4YC&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-sACocjjEr4YC"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 27.99,
+          "currencyCode": "GBP"
+        },
+        "retailPrice": {
+          "amount": 18.19,
+          "currencyCode": "GBP"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=sACocjjEr4YC&rdid=book-sACocjjEr4YC&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 2.799E7,
+              "currencyCode": "GBP"
+            },
+            "retailPrice": {
+              "amountInMicros": 1.819E7,
+              "currencyCode": "GBP"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.uk/books/download/Software_Exorcism-sample-pdf.acsm?id=sACocjjEr4YC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=sACocjjEr4YC&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "YOU HAVE TO OWN THIS BOOK!"
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "RS7OAwAAQBAJ",
+      "etag": "xH5ByvC7R1E",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/RS7OAwAAQBAJ",
+      "volumeInfo": {
+        "title": "Legacy Code",
+        "subtitle": "Fractured Era Series #2",
+        "authors": [
+          "Autumn Kalquist"
+        ],
+        "publisher": "Diapason Publishing",
+        "publishedDate": "2014-06-13",
+        "description": "A brutal conspiracy threatens humanity's survival. Three hundred years ago, the Earth died, and the last humans fled. Beaten. Broken in more ways than one. But there was something they couldn't leave behind: The Legacy Code—mangled genes that force them to abort half their unborn children. When Era and Dritan Corinth get placements on the safest ship in the fleet and win a chance to have a child, they feel lucky. Until the day Era's supposed to find out if her baby has the Defect, and the ship suffers a hull breach. An investigation uncovers new threats: Dangerous secrets. Lies. Treason. Era begins to question everything she’s been taught about the fleet, their search for a new Earth, and the Defect. But the answers she seeks were never meant to be found... Legacy Code is a suspenseful and dark genetic engineering science fiction series that has earned five star reviews from fans of some of the best sci-fi and fantasy books like Hunger Games, Divergent, and Red Rising, and has been compared favorably to Wool, 1984, and the new Battlestar Galactica. \"Addictive sci-fi series. I haven't been this hooked on an author since Anne McCaffery's Killashandra series.\" ~ Marie Hall, New York Times and USA Today Bestselling Author What Readers are Saying: “One of the best books I've ever read, I can't wait to read the rest of the series.” “Space, spaceships, planets, wormholes, dystopian, pregnancy, oh my! I thoroughly enjoyed Legacy Code. It was a quick read for me, as I found it hard to put down. After the first few chapters I was hooked & couldn't get enough… A great mix of SciFi & Dystopian! One of my top favourite reads for 2014.” “Compelling post-apocalyptic novel about survival: Wow. That was... astounding. I really enjoyed reading this… Living in space inside space ships? Holograms? Post-apocalypse? Heck, yeah!” “I cannot get enough of the Fractured Era series. It's the best sci-fi series I've read since The Post-Human series by David Simpson.” “…An uncertain future has the colonists on edge, leading to acts of terrorism and assassination attempts on government officials… There are several intriguing elements at play, most significantly, the mystery of the Legacy Code and whether it holds the key to humanity's survival…I'm looking forward to continuing the series to see where it goes from here.” “A couple of chapters in and I was already hooked! I ended up staying up til midnight (as a mother of a toddler this is a rare occasion) in order to finish it.” “I just finished this book...at 6:00 AM. This society crafted by Autumn Kalquist is fascinating. I can't even imagine how much time she spent carefully plotting every detail. Their existence feels so real and so frighteningly possible.” “It kind of had an initial feel of Battlestar Galactica -- a civilization that has to abandon their planet and go in search of a new one. …It had mystery, a bit of a thriller like aspect, humor, and a taste of romance.\" “I both love and hate this book...but in a good way! Instantly I fell in love with the characters and storyline that Kalquist spun together…This story is based in the future (almost a space opera / dystopian) where the populations of earth escaped to space to find a better world. ...we arrive in a distant future where civilization exists on space ships and they have to take decades before making jumps across space -similar in a way to what I imagine Stargate” “It pulled me in faster than most books I have read and kept me on the edge of my seat through the end. I read it all in just a few hours.\" keywords: free science fiction books, free sci fi books, free science fiction, free sci fi, free space books, free space opera books, free ebooks, fiction books free, sci fi books free, science fiction books free, free mystery books, genetic engineering, space colony, space colonization, space opera, apocalypse, post-apocalyptic, generation ship, end of the world, space battle, space explorer",
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 218,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "averageRating": 4.0,
+        "ratingsCount": 8,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.8.7.0.preview.3",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=RS7OAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=RS7OAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=RS7OAwAAQBAJ&printsec=frontcover&dq=legacy+code&hl=&cd=7&source=gbs_api",
+        "infoLink": "http://books.google.co.uk/books?id=RS7OAwAAQBAJ&dq=legacy+code&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Legacy_Code.html?hl=&id=RS7OAwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=RS7OAwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "I ended up staying up til midnight (as a mother of a toddler this is a rare occasion) in order to finish it.” “I just finished this book...at 6:00 AM. This society crafted by Autumn Kalquist is fascinating."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "ZB9sDwAAQBAJ",
+      "etag": "Du+yORln8Js",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/ZB9sDwAAQBAJ",
+      "volumeInfo": {
+        "title": "Clean Code in Python",
+        "subtitle": "Refactor your legacy code base",
+        "authors": [
+          "Mariano Anaya"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2018-08-29",
+        "description": "Getting the most out of Python to improve your codebase Key Features Save maintenance costs by learning to fix your legacy codebase Learn the principles and techniques of refactoring Apply microservices to your legacy systems by implementing practical techniques Book Description Python is currently used in many different areas such as software construction, systems administration, and data processing. In all of these areas, experienced professionals can find examples of inefficiency, problems, and other perils, as a result of bad code. After reading this book, readers will understand these problems, and more importantly, how to correct them. The book begins by describing the basic elements of writing clean code and how it plays an important role in Python programming. You will learn about writing efficient and readable code using the Python standard library and best practices for software design. You will learn to implement the SOLID principles in Python and use decorators to improve your code. The book delves more deeply into object oriented programming in Python and shows you how to use objects with descriptors and generators. It will also show you the design principles of software testing and how to resolve software problems by implementing design patterns in your code. In the final chapter we break down a monolithic application to a microservice one, starting from the code as the basis for a solid platform. By the end of the book, you will be proficient in applying industry approved coding practices to design clean, sustainable and readable Python code. What you will learn Set up tools to effectively work in a development environment Explore how the magic methods of Python can help us write better code Examine the traits of Python to create advanced object-oriented design Understand removal of duplicated code using decorators and descriptors Effectively refactor code with the help of unit tests Learn to implement the SOLID principles in Python Who this book is for This book will appeal to team leads, software architects and senior software engineers who would like to work on their legacy systems to save cost and improve efficiency. A strong understanding of Programming is assumed.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781788837064"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1788837061"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 332,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.1.1.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=ZB9sDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=ZB9sDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=ZB9sDwAAQBAJ&printsec=frontcover&dq=legacy+code&hl=&cd=8&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=ZB9sDwAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-ZB9sDwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 33.59,
+          "currencyCode": "GBP"
+        },
+        "retailPrice": {
+          "amount": 21.83,
+          "currencyCode": "GBP"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=ZB9sDwAAQBAJ&rdid=book-ZB9sDwAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 3.359E7,
+              "currencyCode": "GBP"
+            },
+            "retailPrice": {
+              "amountInMicros": 2.183E7,
+              "currencyCode": "GBP"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=ZB9sDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "After reading this book, readers will understand these problems, and more importantly, how to correct them. The book begins by describing the basic elements of writing clean code and how it plays an important role in Python programming."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "UTgFCAAAQBAJ",
+      "etag": "C88BWT2dV6A",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/UTgFCAAAQBAJ",
+      "volumeInfo": {
+        "title": "Refactoring",
+        "subtitle": "Improving the Design of Existing Code",
+        "authors": [
+          "Martin Fowler",
+          "Kent Beck"
+        ],
+        "publisher": "Addison-Wesley Professional",
+        "publishedDate": "1999",
+        "description": "Users can dramatically improve the design, performance, and manageability of object-oriented code without altering its interfaces or behavior. \"Refactoring\" shows users exactly how to spot the best opportunities for refactoring and exactly how to do it, step by step.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780201485677"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0201485672"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 431,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 4.5,
+        "ratingsCount": 7,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=UTgFCAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=UTgFCAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=UTgFCAAAQBAJ&printsec=frontcover&dq=legacy+code&hl=&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.co.uk/books?id=UTgFCAAAQBAJ&dq=legacy+code&hl=&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Refactoring.html?hl=&id=UTgFCAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=UTgFCAAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "This book offers a thorough discussion of the principles of refactoring, including where to spot opportunities for refactoring, and how to set up the required tests."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "4ajWDQAAQBAJ",
+      "etag": "WTMYjR6NneY",
+      "selfLink": "https://www.googleapis.com/books/v1/volumes/4ajWDQAAQBAJ",
+      "volumeInfo": {
+        "title": "Modernizing Legacy Applications in PHP",
+        "authors": [
+          "Paul M. Jones"
+        ],
+        "publisher": "Packt Publishing Ltd",
+        "publishedDate": "2016-08-31",
+        "description": "Get your code under control in a series of small, specific steps About This Book Learn to extract and replace legacy artifacts, Improve your application from the ground up while keeping your codebase fully operational, Improve the quality of your legacy applications. Who This Book Is For PHP developers from all skill levels will be able to get value from this book and will be able to transform their spaghetti code applications to clean, modular applications. If you are in the midst of a legacy refactor or you find yourself in a state of despair caused by the code you have inherited, this is the book for you. All you need is to have PHP 5.0 installed, and you're all set to change the way you maintain and deploy your code! What You Will Learn Replace global and new with dependency injection Extract SQL statements to gateways Convert action logic to controllers Remove repeated logic in page scripts Create maintainable PHP code from crufty legacy PHP In Detail Have you noticed that your legacy PHP application is composed of page scripts placed directly in the document root of the web server? Or, do your page scripts, along with any other classes and functions, combine the concerns of model, view, and controller into the same scope? Is the majority of the logical flow incorporated as include files and global functions rather than class methods? Working with such a legacy application feels like dragging your feet through mud, doesn't it?This book will show you how to modernize your application in terms of practice and technique, rather than in terms of using tools like frameworks and libraries, by extracting and replacing its legacy artifacts. We will use a step-by-step approach, moving slowly and methodically, to improve your application from the ground up. We'll show you how dependency injection can replace both the new and global dependencies. We'll also show you how to change the presentation logic to view files and the action logic to a controller. Moreover, we'll keep your application running the whole time. Each completed step in the process will keep your codebase fully operational with higher quality. When we are done, you will be able to breeze through your code like the wind. Your code will be autoloaded, dependency-injected, unit-tested, layer-separated, and front-controlled. Most of the very limited code we will add to your application is specific to this book. We will be improving ourselves as programmers, as well as improving the quality of our legacy application. Style and approach This book gives developers an easy-to-follow, practical and powerful process to bring their applications up to a modern baseline. Each step in the book is practical, self-contained and moves you closer to the end goal you seek: maintainable code. As you follow the exercises in the book, the author almost anticipates your questions and you will have the answers, ready to be implemented on your project.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781787127784"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1787127788"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 286,
+        "printType": "BOOK",
+        "categories": [
+          "Computers"
+        ],
+        "averageRating": 5.0,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.1.2.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=4ajWDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=4ajWDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.uk/books?id=4ajWDQAAQBAJ&printsec=frontcover&dq=legacy+code&hl=&cd=10&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=4ajWDQAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://market.android.com/details?id=book-4ajWDQAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "GB",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 29.99,
+          "currencyCode": "GBP"
+        },
+        "retailPrice": {
+          "amount": 19.49,
+          "currencyCode": "GBP"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=4ajWDQAAQBAJ&rdid=book-4ajWDQAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 2.999E7,
+              "currencyCode": "GBP"
+            },
+            "retailPrice": {
+              "amountInMicros": 1.949E7,
+              "currencyCode": "GBP"
+            },
+            "giftable": true
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "GB",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=4ajWDQAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Get your code under control in a series of small, specific steps About This Book Learn to extract and replace legacy artifacts, Improve your application from the ground up while keeping your codebase fully operational, Improve the quality ..."
+      }
+    }
+  ]
+}
