@@ -6,14 +6,19 @@ import com.andy.books.SearchService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Component
 public class BookSearchService implements SearchService {
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=legacy+code";
+
+    @Autowired
     private final HttpConnector httpConnector;
 
     public BookSearchService(HttpConnector httpConnector) {
@@ -44,16 +49,19 @@ public class BookSearchService implements SearchService {
         SearchResultBuilder searchResultBuilder = new SearchResultBuilder();
 
         JSONObject volumeInfo = item.getJSONObject("volumeInfo");
-        JSONArray authors = volumeInfo.getJSONArray("authors");
-        String author = authors.getString(0);
 
-        searchResultBuilder.setAuthor(author).
+        searchResultBuilder.setAuthor(getAuthors(volumeInfo)).
                 setTitle(volumeInfo.getString("title")).
                 setPublisher(volumeInfo.optString("publisher", "")).
                 setLink(volumeInfo.getString("previewLink")).
                 setThumbnail(getThumbnail(volumeInfo)).
                 createSearchResult();
         return searchResultBuilder.createSearchResult();
+    }
+
+    private String getAuthors(JSONObject volumeInfo) {
+        JSONArray authors = volumeInfo.getJSONArray("authors");
+        return authors.getString(0);
     }
 
     private String getThumbnail(JSONObject volumeInfo) {

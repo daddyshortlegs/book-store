@@ -1,5 +1,6 @@
 package com.andy.books;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +17,8 @@ import java.util.Map;
 @SpringBootApplication
 public class BookStore {
 
+  @Autowired
   private final SearchService searchService;
-  @Value("${spring.datasource.url}")
-  private String dbUrl;
 
   public BookStore(SearchService searchService) {
     this.searchService = searchService;
