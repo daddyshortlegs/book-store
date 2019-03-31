@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookSearchService implements SearchService {
+    private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=legacy+code";
     private final HttpConnector httpConnector;
 
     public BookSearchService(HttpConnector httpConnector) {
@@ -19,7 +20,7 @@ public class BookSearchService implements SearchService {
 
     @Override
     public List<SearchResult> search(String query) {
-        String response = httpConnector.get("https://www.googleapis.com/books/v1/volumes?q=legacy+code");
+        String response = httpConnector.get(BOOK_SEARCH_URL);
 
         JSONObject jsonObject = toJsonObject(response);
         JSONArray items = jsonObject.getJSONArray("items");
@@ -34,10 +35,10 @@ public class BookSearchService implements SearchService {
         return new JSONObject(new JSONTokener(response));
     }
 
-    private SearchResult toSearchResult(JSONObject item1) {
-        JSONObject volumeInfo = item1.getJSONObject("volumeInfo");
+    private SearchResult toSearchResult(JSONObject item) {
+        JSONObject volumeInfo = item.getJSONObject("volumeInfo");
         JSONArray authors = volumeInfo.getJSONArray("authors");
-        String author1 = authors.getString(0);
+        String author = authors.getString(0);
         String title = volumeInfo.getString("title");
         String publisher = volumeInfo.getString("publisher");
         JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
@@ -45,7 +46,7 @@ public class BookSearchService implements SearchService {
         String previewLink = volumeInfo.getString("previewLink");
 
         return new SearchResultBuilder().
-                setAuthor(author1).setTitle(title).setPublisher(publisher).setThumbnail(thumbnail).setLink(previewLink).createSearchResult();
+                setAuthor(author).setTitle(title).setPublisher(publisher).setThumbnail(thumbnail).setLink(previewLink).createSearchResult();
     }
 
 }
