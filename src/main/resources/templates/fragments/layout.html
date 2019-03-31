@@ -1,21 +1,12 @@
 <!doctype html>
 <html th:fragment="layout (template, menu)">
 <head>
-    <title>Gradle Getting Started on Heroku</title>
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <title>Andy's Book Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <div th:replace="${template}"/>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
