@@ -56,7 +56,7 @@ public class BookStoreTest {
 
         List<SearchResult> searchResults = new ArrayList<>();
         searchResults.add(searchResult);
-        when(searchService.search("clean code")).thenReturn(searchResult);
+        when(searchService.search("clean code")).thenReturn(searchResults);
 
         ModelAndView modelAndView = bookStore.search("clean code");
 

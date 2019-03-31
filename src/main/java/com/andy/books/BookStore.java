@@ -45,10 +45,7 @@ public class BookStore {
     if (query.isEmpty())
       return new ModelAndView("index");
 
-    SearchResult search = searchService.search(query);
-
-    List<SearchResult> searchResults = new ArrayList<>();
-    searchResults.add(search);
+    List<SearchResult> searchResults = searchService.search(query);
 
     ModelAndView modelAndView = new ModelAndView("searchResults");
     modelAndView.addObject("results", searchResults);
