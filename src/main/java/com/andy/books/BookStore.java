@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -31,5 +33,10 @@ public class BookStore {
   String hello(Map<String, Object> model) {
     model.put("science", "Hello from Andy's book store");
     return "hello";
+  }
+
+  @RequestMapping("/search")
+  public ModelAndView search(@RequestParam(value="q", defaultValue="") String query) {
+    return new ModelAndView("index");
   }
 }
