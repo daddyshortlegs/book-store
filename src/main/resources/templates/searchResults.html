@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'hello')}">
+<body>
+<div class="container">
+    Found the following books for you:
+</div>
+<div class="container" th:each="result : ${results}">
+
+    <img th:src="${result.thumbnail}" />
+    <p th:text="${result.title}"></p>
+    <p th:text="${result.author}"></p>
+    <p th:text="${result.publisher}"></p>
+
+</div>
+
+
+</body>
+</html>
