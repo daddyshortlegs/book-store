@@ -3,16 +3,15 @@
 <body>
 <div class="container">
     Found the following books for you:
+
+    <div class="row" th:each="result : ${results}">
+        <div class="col-md-6"><a th:href="${result.link}"><img th:src="${result.thumbnail}" /></a></div>
+        <div class="col-md-6">
+            <p th:text="${result.title}"></p>
+            <p th:text="${result.author}"></p>
+            <p th:text="${result.publisher}"></p>
+        </div>
+    </div>
 </div>
-<div class="container" th:each="result : ${results}">
-
-    <img th:src="${result.thumbnail}" />
-    <p th:text="${result.title}"></p>
-    <p th:text="${result.author}"></p>
-    <p th:text="${result.publisher}"></p>
-
-</div>
-
-
 </body>
 </html>
