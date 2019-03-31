@@ -16,8 +16,13 @@ import java.util.Map;
 @SpringBootApplication
 public class BookStore {
 
+  private final SearchService searchService;
   @Value("${spring.datasource.url}")
   private String dbUrl;
+
+  public BookStore(SearchService searchService) {
+    this.searchService = searchService;
+  }
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(BookStore.class, args);
