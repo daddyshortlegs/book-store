@@ -9,6 +9,8 @@ import org.json.JSONTokener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BookSearchService implements SearchService {
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=legacy+code";
@@ -21,21 +23,21 @@ public class BookSearchService implements SearchService {
     @Override
     public List<SearchResult> search(String query) {
         String response = httpConnector.get(BOOK_SEARCH_URL);
+        JSONArray items = getItemsFromJson(response);
+        return createSearchResults(items);
+    }
 
-        JSONObject jsonObject = toJsonObject(response);
-        JSONArray items = jsonObject.getJSONArray("items");
-
-        List<SearchResult> searchResults = new ArrayList<>();
-        for (int i = 0; i < items.length(); i++) {
-            SearchResult searchResult = toSearchResult(items.getJSONObject(i));
-            searchResults.add(searchResult);
-        }
-
-        return searchResults;
+    private JSONArray getItemsFromJson(String response) {
+        return toJsonObject(response).getJSONArray("items");
     }
 
     private JSONObject toJsonObject(String response) {
         return new JSONObject(new JSONTokener(response));
+    }
+
+    private List<SearchResult> createSearchResults(JSONArray items) {
+        return IntStream.range(0, items.length()).
+                mapToObj(i -> toSearchResult(items.getJSONObject(i))).collect(Collectors.toList());
     }
 
     private SearchResult toSearchResult(JSONObject item) {
@@ -44,17 +46,23 @@ public class BookSearchService implements SearchService {
         JSONObject volumeInfo = item.getJSONObject("volumeInfo");
         JSONArray authors = volumeInfo.getJSONArray("authors");
         String author = authors.getString(0);
-        String title = volumeInfo.getString("title");
-        String publisher = volumeInfo.optString("publisher", "");
-        JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
-        if (imageLinks != null) {
-            String thumbnail = imageLinks.getString("thumbnail");
-            searchResultBuilder.setThumbnail(thumbnail);
-        }
-        String previewLink = volumeInfo.getString("previewLink");
 
-        searchResultBuilder.setAuthor(author).setTitle(title).setPublisher(publisher).setLink(previewLink);
+        searchResultBuilder.setAuthor(author).
+                setTitle(volumeInfo.getString("title")).
+                setPublisher(volumeInfo.optString("publisher", "")).
+                setLink(volumeInfo.getString("previewLink")).
+                setThumbnail(getThumbnail(volumeInfo)).
+                createSearchResult();
         return searchResultBuilder.createSearchResult();
+    }
+
+    private String getThumbnail(JSONObject volumeInfo) {
+        JSONObject imageLinks = volumeInfo.optJSONObject("imageLinks");
+        String thumbnail = "";
+        if (imageLinks != null) {
+            thumbnail = imageLinks.optString("thumbnail", "");
+        }
+        return thumbnail;
     }
 
 }
