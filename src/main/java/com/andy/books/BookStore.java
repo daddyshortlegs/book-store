@@ -42,6 +42,12 @@ public class BookStore {
 
   @RequestMapping("/search")
   public ModelAndView search(@RequestParam(value="q", defaultValue="") String query) {
-    return new ModelAndView("index");
+    if (query.isEmpty())
+      return new ModelAndView("index");
+
+    searchService.search(query);
+
+    return new ModelAndView("searchResults");
+
   }
 }
