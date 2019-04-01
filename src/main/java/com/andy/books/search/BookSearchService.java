@@ -9,15 +9,17 @@ import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
 public class BookSearchService implements SearchService {
-    private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes?q=legacy+code";
+    private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 
     @Autowired
     private final HttpConnector httpConnector;
@@ -30,8 +32,11 @@ public class BookSearchService implements SearchService {
     public List<SearchResult> search(String query) {
         String response = null;
         try {
-            response = httpConnector.get(new URL(BOOK_SEARCH_URL));
+            URL theUrl = new URL(BOOK_SEARCH_URL + "?q=" + URLEncoder.encode(query, "UTF-8"));
+            response = httpConnector.get(theUrl);
         } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         JSONArray items = getItemsFromJson(response);

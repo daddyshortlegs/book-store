@@ -10,6 +10,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -32,16 +34,25 @@ public class BookSearchServiceTest {
     }
 
     @Test
-    public void shouldPerformSearch() throws Exception {
-        URL resource = getClass().getResource("/legacy_code.json");
-        FileInputStream fileInputStream = new FileInputStream(new File(resource.toURI()));
-        String json = IOUtils.toString(fileInputStream, StandardCharsets.UTF_8.name());
+    public void shouldSearchForLegacyCode() throws Exception {
+        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenReturn(loadCannedJson());
 
-        URL theUrl = new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code");
-        when(httpConnector.get(theUrl)).thenReturn(json);
+        List<SearchResult> searchResults = service.search("legacy code");
+
+        verifyWeGetBackCannedData(searchResults);
+    }
+
+    @Test
+    public void shouldSearchForCleanCode() throws Exception {
+        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
 
         List<SearchResult> searchResults = service.search("clean code");
 
+        verifyWeGetBackCannedData(searchResults);
+    }
+
+
+    private void verifyWeGetBackCannedData(List<SearchResult> searchResults) {
         assertNotNull(searchResults);
         assertEquals(10, searchResults.size());
         SearchResult searchResult1 = searchResults.get(0);
@@ -62,5 +73,11 @@ public class BookSearchServiceTest {
                 searchResult2.getThumbnail());
         assertEquals("http://books.google.co.uk/books?id=vlo_nWophSYC&q=legacy+code&dq=legacy+code&hl=&cd=2&source=gbs_api",
                 searchResult2.getLink());
+    }
+
+    private String loadCannedJson() throws URISyntaxException, IOException {
+        URL resource = getClass().getResource("/legacy_code.json");
+        FileInputStream fileInputStream = new FileInputStream(new File(resource.toURI()));
+        return IOUtils.toString(fileInputStream, StandardCharsets.UTF_8.name());
     }
 }
