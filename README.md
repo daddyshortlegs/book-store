@@ -1,35 +1,19 @@
 # Andy's Books
 
+A simple app to demo connecting to the Google Books API to display a simple Book Store (although you cannot purchase anything).
 
 ## Running Locally
 
-Make sure you have Java installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
-
 ```sh
-$ git clone https://github.com/heroku/gradle-getting-started.git
-$ cd gradle-getting-started
-$ ./gradlew stage
+$ cd book-store
+$ ./gradlew build
 $ heroku local web
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-If you're going to use a database, ensure you have a local `.env` file that reads something like this:
+## Notes
 
-```
-DATABASE_URL=postgres://localhost:5432/gradle_database_name
-```
+It's a very basic UI and is just functional, no bells or whistle. The main point of this is to try out the Google Books API and do some TDD with Spring Boot.
 
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-## Documentation
-
-For more information about using Java on Heroku, see these Dev Center articles:
-
-- [Java on Heroku](https://devcenter.heroku.com/categories/java)
+No real validation is used on the search query, the main reason being that Google's API does this already and I'm pretty sure it is pretty robust about checking for dodgy data. So this has been left out.
