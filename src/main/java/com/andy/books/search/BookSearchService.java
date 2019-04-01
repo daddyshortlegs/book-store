@@ -65,14 +65,15 @@ public class BookSearchService implements SearchService {
     }
 
     String getAuthors(JSONObject volumeInfo) {
-        JSONArray authorsArray = volumeInfo.getJSONArray("authors");
-        int length = authorsArray.length();
-        if (length == 1) return authorsArray.getString(0);
+        JSONArray authors = volumeInfo.getJSONArray("authors");
+        if (authors.length() == 1) return authors.getString(0);
+        return buildCommaDelimtedString(authors, authors.length());
+    }
 
+    private String buildCommaDelimtedString(JSONArray authors, int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            String string = authorsArray.getString(i);
-            sb.append(string);
+            sb.append(authors.getString(i));
             if (i < length - 1)
                 sb.append(", ");
         }
@@ -87,5 +88,4 @@ public class BookSearchService implements SearchService {
         }
         return thumbnail;
     }
-
 }
