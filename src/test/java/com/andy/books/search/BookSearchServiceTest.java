@@ -51,19 +51,6 @@ public class BookSearchServiceTest {
         verifyWeGetBackCannedData(searchResults);
     }
 
-    @Test
-    public void shouldCreateEscapedBookSearchUrl_whenQueryContainsSpace() {
-        URL clean_code = service.createSearchUrl("clean code");
-        assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", clean_code.toString());
-    }
-
-    @Test
-    public void shouldCreateEscapedBookSearchUrl_whenQueryContainsQuotes() {
-        URL clean_code = service.createSearchUrl("\"something special\"");
-        assertEquals("https://www.googleapis.com/books/v1/volumes?q=%22something+special%22", clean_code.toString());
-    }
-
-
     private void verifyWeGetBackCannedData(List<SearchResult> searchResults) {
         assertNotNull(searchResults);
         assertEquals(10, searchResults.size());

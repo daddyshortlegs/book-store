@@ -11,11 +11,7 @@ import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,7 +21,6 @@ public class BookSearchService implements SearchService {
 
     private Logger logger = LogManager.getLogger();
 
-    private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 
     @Autowired
     private final HttpConnector httpConnector;
@@ -36,21 +31,10 @@ public class BookSearchService implements SearchService {
 
     @Override
     public List<SearchResult> search(String query) {
-        URL theUrl = createSearchUrl(query);
+        URL theUrl = GoogleBooksUrl.createSearchQuery(query);
         String response = httpConnector.get(theUrl);
         JSONArray items = getItemsFromJson(response);
         return createSearchResults(items);
-    }
-
-    URL createSearchUrl(String query) {
-        URL theUrl = null;
-        try {
-            theUrl = new URL(BOOK_SEARCH_URL + "?q=" + URLEncoder.encode(query, StandardCharsets.UTF_8.name()));
-        } catch (MalformedURLException e) {
-            logger.error("Invalid URL");
-        } catch (UnsupportedEncodingException ignored) {
-        }
-        return theUrl;
     }
 
     private JSONArray getItemsFromJson(String response) {
