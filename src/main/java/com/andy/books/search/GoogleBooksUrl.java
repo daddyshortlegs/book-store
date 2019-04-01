@@ -16,7 +16,6 @@ class GoogleBooksUrl {
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 
     static URL createSearchQuery(String query) {
-
         URL theUrl = null;
         try {
             theUrl = new URL(BOOK_SEARCH_URL + "?" + createQueryString(query));

@@ -2,7 +2,10 @@ package com.andy.books.search;
 
 import com.andy.books.SearchResult;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -50,6 +53,35 @@ public class BookSearchServiceTest {
 
         verifyWeGetBackCannedData(searchResults);
     }
+
+    @Test
+    public void shouldCreateCommaDelimtedAuthors_whenOneAuthor() {
+        JSONArray authors = new JSONArray();
+        authors.put("Uncle Bob");
+        JSONObject volumeInfo = new JSONObject();
+        volumeInfo.put("authors", authors);
+
+        String delimtedString = service.getAuthors(volumeInfo);
+
+        assertEquals("Uncle Bob", delimtedString);
+    }
+
+    @Test
+    @Ignore
+    public void shouldCreateCommaDelimtedAuthors_whenMoreThanOneAuthor() {
+        JSONArray authors = new JSONArray();
+        authors.put("Erich Gamma");
+        authors.put("Richard Helm");
+        authors.put("Ralph Johnson");
+        authors.put("John Vlissides");
+        JSONObject volumeInfo = new JSONObject();
+        volumeInfo.put("authors", authors);
+
+        String delimtedString = service.getAuthors(volumeInfo);
+
+        assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimtedString);
+    }
+
 
     private void verifyWeGetBackCannedData(List<SearchResult> searchResults) {
         assertNotNull(searchResults);

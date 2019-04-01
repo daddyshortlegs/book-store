@@ -64,7 +64,7 @@ public class BookSearchService implements SearchService {
         return searchResultBuilder.createSearchResult();
     }
 
-    private String getAuthors(JSONObject volumeInfo) {
+    String getAuthors(JSONObject volumeInfo) {
         JSONArray authors = volumeInfo.getJSONArray("authors");
         return authors.getString(0);
     }
