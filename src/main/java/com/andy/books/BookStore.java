@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @SpringBootApplication
@@ -32,15 +31,8 @@ public class BookStore {
   }
 
   @RequestMapping("/")
-  String index() {
+  String searchLandingPage() {
     return "index";
-  }
-
-
-  @RequestMapping("/hello")
-  String hello(Map<String, Object> model) {
-    model.put("science", "Hello from Andy's book store");
-    return "searchResults";
   }
 
   @RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -51,7 +43,7 @@ public class BookStore {
 
     List<SearchResult> searchResults = searchService.search(query);
 
-    ModelAndView modelAndView = new ModelAndView("searchResults");
+    ModelAndView modelAndView = new ModelAndView("index");
     modelAndView.addObject("results", searchResults);
     return modelAndView;
 

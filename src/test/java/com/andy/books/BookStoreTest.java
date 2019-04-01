@@ -40,7 +40,7 @@ public class BookStoreTest {
     public void shouldHandleSearchRequest() {
         ModelAndView modelAndView = bookStore.search("clean code");
 
-        assertEquals("searchResults", modelAndView.getViewName());
+        assertEquals("index", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code");
     }
 
@@ -60,7 +60,7 @@ public class BookStoreTest {
 
         ModelAndView modelAndView = bookStore.search("clean code");
 
-        assertEquals("searchResults", modelAndView.getViewName());
+        assertEquals("index", modelAndView.getViewName());
 
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
