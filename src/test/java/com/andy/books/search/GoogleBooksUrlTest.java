@@ -27,4 +27,11 @@ public class GoogleBooksUrlTest {
         URL theUrl = url.createSearchQuery("\"something special\"");
         assertEquals("https://www.googleapis.com/books/v1/volumes?q=%22something+special%22", theUrl.toString());
     }
+
+    @Test
+    public void tryToBreakIt() {
+        URL theUrl = url.createSearchQuery("\"\"\"\n\n\n\n\n\"\"\"\n\n\n\n\n\"\"\"\n\n\n\n\n\"\"\"\n\n\n\n\n");
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=%22%22%22%0A%0A%0A%0A%0A%22%22%22%0A%0A%0A%0A%0A%22%22%22%0A%0A%0A%0A%0A%22%22%22%0A%0A%0A%0A%0A", theUrl.toString());
+    }
+
 }

@@ -35,8 +35,14 @@ public class BookStore {
     return "index";
   }
 
+  @RequestMapping("/showError")
+  String showError() {
+    return "error";
+  }
+
+
   @RequestMapping(value = "/search", method = RequestMethod.GET)
-  public ModelAndView search(@RequestParam(value="q", defaultValue="") String query) {
+  ModelAndView search(@RequestParam(value="q", defaultValue="") String query) {
     logger.info("Search request was " + query);
     if (query.isEmpty())
       return new ModelAndView("index");

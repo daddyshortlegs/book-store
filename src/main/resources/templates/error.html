@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'error')}">
-
   <body>
-    <p th:text="${message}">Exception message</p>
-  </body>
 
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1>Andy's Book Store</h1>
+      </div>
+    </div>
+
+    <div class="container alert alert-warning" role="alert">
+      Sorry, we're having a few problems. Please come back later.
+    </div>
+  </body>
 </html>

@@ -28,6 +28,12 @@ public class BookStoreTest {
         bookStore = new BookStore(searchService);
     }
 
+
+    @Test
+    public void shouldGetLandingPage() {
+        assertEquals("index", bookStore.searchLandingPage());
+    }
+
     @Test
     public void shouldNotHandleSearchRequest_whenQueryIsEmpty() {
         ModelAndView modelAndView = bookStore.search("");
