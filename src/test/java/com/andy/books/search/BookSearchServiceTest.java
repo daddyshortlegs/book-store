@@ -92,7 +92,7 @@ public class BookSearchServiceTest {
         assertEquals("Prentice Hall Professional", searchResult1.getPublisher());
         assertEquals("http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
                 searchResult1.getThumbnail());
-        assertEquals("http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api",
+        assertEquals("https://play.google.com/store/books/details?id=fB6s_Z6g0gIC&source=gbs_api",
                 searchResult1.getLink());
 
         SearchResult searchResult2 = searchResults.get(1);
@@ -101,7 +101,7 @@ public class BookSearchServiceTest {
         assertEquals("Prentice Hall", searchResult2.getPublisher());
         assertEquals("http://books.google.com/books/content?id=vlo_nWophSYC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
                 searchResult2.getThumbnail());
-        assertEquals("http://books.google.co.uk/books?id=vlo_nWophSYC&q=legacy+code&dq=legacy+code&hl=&cd=2&source=gbs_api",
+        assertEquals("http://books.google.co.uk/books?id=vlo_nWophSYC&dq=legacy+code&hl=&source=gbs_api",
                 searchResult2.getLink());
     }
 

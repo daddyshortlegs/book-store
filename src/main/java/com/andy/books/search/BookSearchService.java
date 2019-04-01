@@ -58,7 +58,7 @@ public class BookSearchService implements SearchService {
         searchResultBuilder.setAuthor(getAuthors(volumeInfo)).
                 setTitle(volumeInfo.getString("title")).
                 setPublisher(volumeInfo.optString("publisher", "")).
-                setLink(volumeInfo.getString("previewLink")).
+                setLink(volumeInfo.getString("infoLink")).
                 setThumbnail(getThumbnail(volumeInfo)).
                 createSearchResult();
         return searchResultBuilder.createSearchResult();
