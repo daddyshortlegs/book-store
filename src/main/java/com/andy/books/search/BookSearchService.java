@@ -65,8 +65,18 @@ public class BookSearchService implements SearchService {
     }
 
     String getAuthors(JSONObject volumeInfo) {
-        JSONArray authors = volumeInfo.getJSONArray("authors");
-        return authors.getString(0);
+        JSONArray authorsArray = volumeInfo.getJSONArray("authors");
+        int length = authorsArray.length();
+        if (length == 1) return authorsArray.getString(0);
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            String string = authorsArray.getString(i);
+            sb.append(string);
+            if (i < length - 1)
+                sb.append(", ");
+        }
+        return sb.toString();
     }
 
     private String getThumbnail(JSONObject volumeInfo) {

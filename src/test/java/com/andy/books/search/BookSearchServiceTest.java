@@ -67,7 +67,6 @@ public class BookSearchServiceTest {
     }
 
     @Test
-    @Ignore
     public void shouldCreateCommaDelimtedAuthors_whenMoreThanOneAuthor() {
         JSONArray authors = new JSONArray();
         authors.put("Erich Gamma");
