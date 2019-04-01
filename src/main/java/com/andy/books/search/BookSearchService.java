@@ -6,6 +6,7 @@ import com.andy.books.SearchService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class BookSearchService implements SearchService {
 
         JSONObject volumeInfo = item.getJSONObject("volumeInfo");
 
-        searchResultBuilder.setAuthor(getAuthors(volumeInfo)).
+        searchResultBuilder.setAuthor(getAuthorsOrEmptyString(volumeInfo)).
                 setTitle(volumeInfo.getString("title")).
                 setPublisher(volumeInfo.optString("publisher", "")).
                 setLink(volumeInfo.getString("infoLink")).
@@ -64,7 +65,15 @@ public class BookSearchService implements SearchService {
         return searchResultBuilder.createSearchResult();
     }
 
-    String getAuthors(JSONObject volumeInfo) {
+    String getAuthorsOrEmptyString(JSONObject volumeInfo) {
+        try {
+            return getAuthors(volumeInfo);
+        } catch (JSONException e) {
+            return "";
+        }
+    }
+
+    private String getAuthors(JSONObject volumeInfo) {
         JSONArray authors = volumeInfo.getJSONArray("authors");
         if (authors.length() == 1) return authors.getString(0);
         return buildCommaDelimtedString(authors, authors.length());

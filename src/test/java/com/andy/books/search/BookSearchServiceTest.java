@@ -5,7 +5,6 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -55,13 +54,24 @@ public class BookSearchServiceTest {
     }
 
     @Test
+    public void shouldCreateEmptyString_whenNoAuthors() {
+        JSONObject volumeInfo = new JSONObject();
+        volumeInfo.put("title", "BDD In Action");
+
+        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
+
+        assertEquals("", delimtedString);
+    }
+
+
+    @Test
     public void shouldCreateCommaDelimtedAuthors_whenOneAuthor() {
         JSONArray authors = new JSONArray();
         authors.put("Uncle Bob");
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("authors", authors);
 
-        String delimtedString = service.getAuthors(volumeInfo);
+        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
 
         assertEquals("Uncle Bob", delimtedString);
     }
@@ -76,7 +86,7 @@ public class BookSearchServiceTest {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("authors", authors);
 
-        String delimtedString = service.getAuthors(volumeInfo);
+        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
 
         assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimtedString);
     }
