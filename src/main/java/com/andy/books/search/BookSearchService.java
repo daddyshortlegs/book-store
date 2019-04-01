@@ -3,6 +3,8 @@ package com.andy.books.search;
 import com.andy.books.SearchResult;
 import com.andy.books.SearchResultBuilder;
 import com.andy.books.SearchService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -13,12 +15,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Component
 public class BookSearchService implements SearchService {
+
+    private Logger logger = LogManager.getLogger();
+
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 
     @Autowired
@@ -30,17 +36,21 @@ public class BookSearchService implements SearchService {
 
     @Override
     public List<SearchResult> search(String query) {
-        String response = null;
-        try {
-            URL theUrl = new URL(BOOK_SEARCH_URL + "?q=" + URLEncoder.encode(query, "UTF-8"));
-            response = httpConnector.get(theUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        URL theUrl = createSearchUrl(query);
+        String response = httpConnector.get(theUrl);
         JSONArray items = getItemsFromJson(response);
         return createSearchResults(items);
+    }
+
+    URL createSearchUrl(String query) {
+        URL theUrl = null;
+        try {
+            theUrl = new URL(BOOK_SEARCH_URL + "?q=" + URLEncoder.encode(query, StandardCharsets.UTF_8.name()));
+        } catch (MalformedURLException e) {
+            logger.error("Invalid URL");
+        } catch (UnsupportedEncodingException ignored) {
+        }
+        return theUrl;
     }
 
     private JSONArray getItemsFromJson(String response) {

@@ -23,10 +23,10 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class BookSearchServiceTest {
 
-    BookSearchService service;
+    private BookSearchService service;
 
     @Mock
-    HttpConnector httpConnector;
+    private HttpConnector httpConnector;
 
     @Before
     public void setup() {
@@ -49,6 +49,18 @@ public class BookSearchServiceTest {
         List<SearchResult> searchResults = service.search("clean code");
 
         verifyWeGetBackCannedData(searchResults);
+    }
+
+    @Test
+    public void shouldCreateEscapedBookSearchUrl_whenQueryContainsSpace() {
+        URL clean_code = service.createSearchUrl("clean code");
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", clean_code.toString());
+    }
+
+    @Test
+    public void shouldCreateEscapedBookSearchUrl_whenQueryContainsQuotes() {
+        URL clean_code = service.createSearchUrl("\"something special\"");
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=%22something+special%22", clean_code.toString());
     }
 
 
