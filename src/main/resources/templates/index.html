@@ -20,10 +20,10 @@
 </div>
 
 <div class="container">
-    <div class="row" th:each="result : ${results}">
+    <div class="row top_buffer" th:each="result : ${results}">
         <div class="col-md-6"><a th:href="${result.link}"><img th:src="${result.thumbnail}" /></a></div>
         <div class="col-md-6">
-            <p th:text="${result.title}"></p>
+            <p><em th:text="${result.title}"></em></p>
             <p th:text="${result.author}"></p>
             <p th:text="${result.publisher}"></p>
         </div>
