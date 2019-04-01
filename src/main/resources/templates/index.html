@@ -22,8 +22,8 @@
 <div class="container">
     <div class="row top_buffer" th:each="result : ${results}">
         <div class="col-md-6"><a th:href="${result.link}"><img th:src="${result.thumbnail}" /></a></div>
-        <div class="col-md-6">
-            <p><em th:text="${result.title}"></em></p>
+        <div class="col-md-auto">
+            <p><a th:href="${result.link}"><em th:text="${result.title}"></em></a></p>
             <p th:text="${result.author}"></p>
             <p th:text="${result.publisher}"></p>
         </div>
