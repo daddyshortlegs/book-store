@@ -9,6 +9,8 @@ import org.json.JSONTokener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -26,7 +28,12 @@ public class BookSearchService implements SearchService {
 
     @Override
     public List<SearchResult> search(String query) {
-        String response = httpConnector.get(BOOK_SEARCH_URL);
+        String response = null;
+        try {
+            response = httpConnector.get(new URL(BOOK_SEARCH_URL));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         JSONArray items = getItemsFromJson(response);
         return createSearchResults(items);
     }

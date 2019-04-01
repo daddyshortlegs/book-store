@@ -2,9 +2,9 @@ package com.andy.books.search;
 
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
+import java.net.URL;
 
 @Component
 public interface HttpConnector {
-    String get(String url);
+    String get(URL theUrl);
 }

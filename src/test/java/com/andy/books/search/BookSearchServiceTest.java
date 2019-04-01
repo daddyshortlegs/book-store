@@ -2,7 +2,6 @@ package com.andy.books.search;
 
 import com.andy.books.SearchResult;
 import org.apache.commons.io.IOUtils;
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +37,8 @@ public class BookSearchServiceTest {
         FileInputStream fileInputStream = new FileInputStream(new File(resource.toURI()));
         String json = IOUtils.toString(fileInputStream, StandardCharsets.UTF_8.name());
 
-        when(httpConnector.get("https://www.googleapis.com/books/v1/volumes?q=legacy+code")).thenReturn(json);
+        URL theUrl = new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code");
+        when(httpConnector.get(theUrl)).thenReturn(json);
 
         List<SearchResult> searchResults = service.search("clean code");
 
