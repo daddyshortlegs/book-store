@@ -47,14 +47,20 @@ public class BookStore {
         if (query.isEmpty())
             return new ModelAndView("index");
 
-        List<SearchResult> searchResults;
+        return displayResultsOrErrorMessage(query);
+    }
+
+    private ModelAndView displayResultsOrErrorMessage(String query) {
         try {
-            searchResults = searchService.search(query);
+            return doSearchAndDisplayResults(query);
         }
         catch (BookSearchException e) {
             return new ModelAndView("error");
         }
+    }
 
+    private ModelAndView doSearchAndDisplayResults(String query) {
+        List<SearchResult> searchResults = searchService.search(query);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
         return modelAndView;
