@@ -21,7 +21,7 @@ public class HttpConnectorImpl implements HttpConnector {
     public String get(URL theUrl) {
         logger.info("Making request to " + theUrl);
         String jsonResponse = "";
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpClient httpclient = getHttpClient();
         HttpGet httpGet = new HttpGet(theUrl.toString());
         try (CloseableHttpResponse response = httpclient.execute(httpGet)) {
             jsonResponse = EntityUtils.toString(response.getEntity());
@@ -30,5 +30,9 @@ public class HttpConnectorImpl implements HttpConnector {
         }
 
         return jsonResponse;
+    }
+
+    protected CloseableHttpClient getHttpClient() {
+        return HttpClients.createDefault();
     }
 }
