@@ -40,7 +40,7 @@ public class BookSearchServiceTest {
     @Test(expected=BookSearchException.class)
     public void shouldThrowException_whenHttpConnectorFails() throws MalformedURLException {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenThrow(BookSearchException.class);
-        List<SearchResult> searchResults = service.search("legacy code");
+        service.search("legacy code");
     }
 
     @Test

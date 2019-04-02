@@ -64,7 +64,7 @@ public class HttpConnectorImplTest {
     class FakeHttpConnector extends HttpConnectorImpl {
         private CloseableHttpClient httpClient;
 
-        public FakeHttpConnector(CloseableHttpClient httpClient) {
+        FakeHttpConnector(CloseableHttpClient httpClient) {
             this.httpClient = httpClient;
         }
 

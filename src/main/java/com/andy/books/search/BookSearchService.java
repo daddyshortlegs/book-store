@@ -20,9 +20,6 @@ import java.util.stream.IntStream;
 @Component
 public class BookSearchService implements SearchService {
 
-    private Logger logger = LogManager.getLogger();
-
-
     @Autowired
     private final HttpConnector httpConnector;
 
