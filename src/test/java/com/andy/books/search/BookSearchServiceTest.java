@@ -1,5 +1,6 @@
 package com.andy.books.search;
 
+import com.andy.books.BookSearchException;
 import com.andy.books.SearchResult;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -33,6 +35,12 @@ public class BookSearchServiceTest {
     @Before
     public void setup() {
         service = new BookSearchService(httpConnector);
+    }
+
+    @Test(expected=BookSearchException.class)
+    public void shouldThrowException_whenHttpConnectorFails() throws MalformedURLException {
+        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenThrow(BookSearchException.class);
+        List<SearchResult> searchResults = service.search("legacy code");
     }
 
     @Test

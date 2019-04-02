@@ -1,5 +1,6 @@
 package com.andy.books.search;
 
+import com.andy.books.BookSearchException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.BasicHttpEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -28,14 +29,12 @@ public class HttpConnectorImplTest {
     @Mock
     private CloseableHttpResponse response;
 
-    @Test
-    public void shouldReturnEmptyResponse() throws IOException {
+    @Test(expected = BookSearchException.class)
+    public void shouldReturnEmptyResponse() throws Exception {
         httpConnector = new FakeHttpConnector(closeableHttpClient);
         when(closeableHttpClient.execute(any())).thenThrow(IOException.class);
 
-        String response = httpConnector.get(new URL("https://www.google.co,uk"));
-
-        assertEquals("", response);
+        httpConnector.get(new URL("https://www.google.co,uk"));
     }
 
     @Test
