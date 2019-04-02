@@ -75,4 +75,14 @@ public class BookStoreTest {
         assertEquals(results, searchResults);
     }
 
+    @Test
+    public void shouldRedirectToErrorPage_whenFailureGettingData() {
+        when(searchService.search("clean code")).thenThrow(BookSearchException.class);
+
+        ModelAndView modelAndView = bookStore.search("clean code");
+
+        assertEquals("error", modelAndView.getViewName());
+        verify(searchService, times(1)).search("clean code");
+    }
+
 }
