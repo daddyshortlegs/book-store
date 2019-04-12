@@ -2,6 +2,12 @@
 
 A simple app to demo connecting to the Google Books API to display a simple Book Store (although you cannot purchase anything).
 
+## Running the tests
+
+```sh
+$ ./gradlew test
+```
+
 ## Running Locally
 
 ```sh
