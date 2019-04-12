@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 
 @Component
-public interface HttpConnector {
+interface HttpConnector {
     String get(URL theUrl);
 }

@@ -26,7 +26,7 @@ public class BookStore {
         this.searchService = searchService;
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         SpringApplication.run(BookStore.class, args);
     }
 

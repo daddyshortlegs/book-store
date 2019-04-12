@@ -3,8 +3,6 @@ package com.andy.books.search;
 import com.andy.books.SearchResult;
 import com.andy.books.SearchResultBuilder;
 import com.andy.books.SearchService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,10 +71,10 @@ public class BookSearchService implements SearchService {
     private String getAuthors(JSONObject volumeInfo) {
         JSONArray authors = volumeInfo.getJSONArray("authors");
         if (authors.length() == 1) return authors.getString(0);
-        return buildCommaDelimtedString(authors, authors.length());
+        return buildCommaDelimitedString(authors, authors.length());
     }
 
-    private String buildCommaDelimtedString(JSONArray authors, int length) {
+    private String buildCommaDelimitedString(JSONArray authors, int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             sb.append(authors.getString(i));

@@ -66,9 +66,9 @@ public class BookSearchServiceTest {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("title", "BDD In Action");
 
-        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
+        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
 
-        assertEquals("", delimtedString);
+        assertEquals("", delimitedString);
     }
 
 
@@ -79,9 +79,9 @@ public class BookSearchServiceTest {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("authors", authors);
 
-        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
+        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
 
-        assertEquals("Uncle Bob", delimtedString);
+        assertEquals("Uncle Bob", delimitedString);
     }
 
     @Test
@@ -94,9 +94,9 @@ public class BookSearchServiceTest {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("authors", authors);
 
-        String delimtedString = service.getAuthorsOrEmptyString(volumeInfo);
+        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
 
-        assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimtedString);
+        assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimitedString);
     }
 
 
