@@ -42,25 +42,25 @@ public class BookStore {
 
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    ModelAndView search(@RequestParam(value = "q", defaultValue = "") String query) {
+    ModelAndView search(@RequestParam(value = "q", defaultValue = "") String query, @RequestParam(value = "page", defaultValue = "0") String pageNumber) {
         logger.info("Search request was " + query);
         if (query.isEmpty())
             return new ModelAndView("index");
 
-        return displayResultsOrErrorMessage(query);
+        return displayResultsOrErrorMessage(query, pageNumber);
     }
 
-    private ModelAndView displayResultsOrErrorMessage(String query) {
+    private ModelAndView displayResultsOrErrorMessage(String query, String pageNumber) {
         try {
-            return doSearchAndDisplayResults(query);
+            return doSearchAndDisplayResults(query, pageNumber);
         }
         catch (BookSearchException e) {
             return new ModelAndView("error");
         }
     }
 
-    private ModelAndView doSearchAndDisplayResults(String query) {
-        List<SearchResult> searchResults = searchService.search(query);
+    private ModelAndView doSearchAndDisplayResults(String query, String pageNumber) {
+        List<SearchResult> searchResults = searchService.search(query, pageNumber);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
         return modelAndView;

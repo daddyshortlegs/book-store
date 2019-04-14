@@ -36,19 +36,28 @@ public class BookStoreTest {
 
     @Test
     public void shouldNotHandleSearchRequest_whenQueryIsEmpty() {
-        ModelAndView modelAndView = bookStore.search("");
+        ModelAndView modelAndView = bookStore.search("", "0");
 
         assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(0)).search(anyString());
+        verify(searchService, times(0)).search(anyString(), eq("0"));
     }
 
     @Test
     public void shouldHandleSearchRequest() {
-        ModelAndView modelAndView = bookStore.search("clean code");
+        ModelAndView modelAndView = bookStore.search("clean code", "0");
 
         assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code");
+        verify(searchService, times(1)).search("clean code", "0");
     }
+
+    @Test
+    public void shouldHandleSearchRequest_withPagination() {
+        ModelAndView modelAndView = bookStore.search("clean code", "5");
+
+        assertEquals("index", modelAndView.getViewName());
+        verify(searchService, times(1)).search("clean code", "5");
+    }
+
 
     @Test
     public void shouldHandleSearchRequest_andReturnSomeResults() {
@@ -62,27 +71,27 @@ public class BookStoreTest {
 
         List<SearchResult> searchResults = new ArrayList<>();
         searchResults.add(searchResult);
-        when(searchService.search("clean code")).thenReturn(searchResults);
+        when(searchService.search("clean code", "0")).thenReturn(searchResults);
 
-        ModelAndView modelAndView = bookStore.search("clean code");
+        ModelAndView modelAndView = bookStore.search("clean code", "0");
 
         assertEquals("index", modelAndView.getViewName());
 
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
 
-        verify(searchService, times(1)).search("clean code");
+        verify(searchService, times(1)).search("clean code", "0");
         assertEquals(results, searchResults);
     }
 
     @Test
     public void shouldRedirectToErrorPage_whenFailureGettingData() {
-        when(searchService.search("clean code")).thenThrow(BookSearchException.class);
+        when(searchService.search("clean code", "0")).thenThrow(BookSearchException.class);
 
-        ModelAndView modelAndView = bookStore.search("clean code");
+        ModelAndView modelAndView = bookStore.search("clean code", "0");
 
         assertEquals("error", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code");
+        verify(searchService, times(1)).search("clean code", "0");
     }
 
 }

@@ -40,14 +40,14 @@ public class BookSearchServiceTest {
     @Test(expected=BookSearchException.class)
     public void shouldThrowException_whenHttpConnectorFails() throws MalformedURLException {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenThrow(BookSearchException.class);
-        service.search("legacy code");
+        service.search("legacy code", "0");
     }
 
     @Test
     public void shouldSearchForLegacyCode() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("legacy code");
+        List<SearchResult> searchResults = service.search("legacy code", "0");
 
         verifyWeGetBackCannedData(searchResults);
     }
@@ -56,7 +56,7 @@ public class BookSearchServiceTest {
     public void shouldSearchForCleanCode() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("clean code");
+        List<SearchResult> searchResults = service.search("clean code", "0");
 
         verifyWeGetBackCannedData(searchResults);
     }
