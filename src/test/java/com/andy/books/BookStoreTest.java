@@ -51,26 +51,9 @@ public class BookStoreTest {
     }
 
     @Test
-    public void shouldHandleSearchRequest_withPagination() {
-        ModelAndView modelAndView = bookStore.search("clean code", "5");
-
-        assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code", "5");
-    }
-
-
-    @Test
     public void shouldHandleSearchRequest_andReturnSomeResults() {
-        SearchResult searchResult = new SearchResultBuilder().
-                setAuthor("Michael Feathers").
-                setTitle("Working Effectively With Legacy Code").
-                setPublisher("Prentice Hall").
-                setThumbnail("http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api").
-                setLink("http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api").
-                createSearchResult();
-
         List<SearchResult> searchResults = new ArrayList<>();
-        searchResults.add(searchResult);
+        searchResults.add(itemFromSearch());
         when(searchService.search("clean code", "0")).thenReturn(searchResults);
 
         ModelAndView modelAndView = bookStore.search("clean code", "0");
@@ -81,7 +64,16 @@ public class BookStoreTest {
         List<SearchResult> results = (List<SearchResult>) model.get("results");
 
         verify(searchService, times(1)).search("clean code", "0");
-        assertEquals(results, searchResults);
+        assertEquals("0", model.get("totalPages"));
+        assertEquals(searchResults, results);
+    }
+
+    @Test
+    public void shouldHandleSearchRequest_withPagination() {
+        ModelAndView modelAndView = bookStore.search("clean code", "5");
+
+        assertEquals("index", modelAndView.getViewName());
+        verify(searchService, times(1)).search("clean code", "5");
     }
 
     @Test
@@ -92,6 +84,16 @@ public class BookStoreTest {
 
         assertEquals("error", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code", "0");
+    }
+
+    private SearchResult itemFromSearch() {
+        return new SearchResultBuilder().
+                setAuthor("Michael Feathers").
+                setTitle("Working Effectively With Legacy Code").
+                setPublisher("Prentice Hall").
+                setThumbnail("http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api").
+                setLink("http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api").
+                createSearchResult();
     }
 
 }

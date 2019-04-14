@@ -63,6 +63,7 @@ public class BookStore {
         List<SearchResult> searchResults = searchService.search(query, pageNumber);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
+        modelAndView.addObject("totalPages", "0");
         return modelAndView;
     }
 }
