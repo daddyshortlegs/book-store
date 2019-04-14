@@ -36,8 +36,18 @@ public class GoogleBooksUrlTest {
     public void shouldAddPageNumber() {
         URL theUrl = GoogleBooksUrl.createSearchQuery("clean code", "10");
         assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code&startIndex=10", theUrl.toString());
-
     }
 
+    @Test
+    public void shoulldIgnoreDodgyPageNumber_whenNull() {
+        URL theUrl = GoogleBooksUrl.createSearchQuery("clean code", null);
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", theUrl.toString());
+    }
+
+    @Test
+    public void shoulldIgnoreDodgyPageNumber_whenBlank() {
+        URL theUrl = GoogleBooksUrl.createSearchQuery("clean code", "");
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", theUrl.toString());
+    }
 
 }
