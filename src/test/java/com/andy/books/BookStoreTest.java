@@ -53,27 +53,32 @@ public class BookStoreTest {
     @Test
     public void shouldHandleSearchRequest_andReturnSomeResults() {
         List<SearchResult> searchResults = new ArrayList<>();
-        searchResults.add(itemFromSearch());
+        searchResults.add(itemFromSearch("Title 1"));
         when(searchService.search("clean code", "0")).thenReturn(searchResults);
 
         ModelAndView modelAndView = bookStore.search("clean code", "0");
 
         assertEquals("index", modelAndView.getViewName());
-
+        verify(searchService, times(1)).search("clean code", "0");
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
-
-        verify(searchService, times(1)).search("clean code", "0");
         assertEquals("0", model.get("totalPages"));
         assertEquals(searchResults, results);
     }
 
     @Test
-    public void shouldHandleSearchRequest_withPagination() {
+    public void shouldHandleSearchRequest_withTenPages() {
+        List<SearchResult> searchResults = createTenPagesOfBooks();
+        when(searchService.search("clean code", "5")).thenReturn(searchResults);
+
         ModelAndView modelAndView = bookStore.search("clean code", "5");
 
         assertEquals("index", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code", "5");
+        Map<String, Object> model = modelAndView.getModel();
+        List<SearchResult> results = (List<SearchResult>) model.get("results");
+        assertEquals("10", model.get("totalPages"));
+        assertEquals(searchResults, results);
     }
 
     @Test
@@ -86,10 +91,18 @@ public class BookStoreTest {
         verify(searchService, times(1)).search("clean code", "0");
     }
 
-    private SearchResult itemFromSearch() {
+    private List<SearchResult> createTenPagesOfBooks() {
+        List<SearchResult> searchResults = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            searchResults.add(itemFromSearch("Title " + i));
+        }
+        return searchResults;
+    }
+
+    private SearchResult itemFromSearch(String bookName) {
         return new SearchResultBuilder().
                 setAuthor("Michael Feathers").
-                setTitle("Working Effectively With Legacy Code").
+                setTitle(bookName).
                 setPublisher("Prentice Hall").
                 setThumbnail("http://books.google.com/books/content?id=fB6s_Z6g0gIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api").
                 setLink("http://books.google.co.uk/books?id=fB6s_Z6g0gIC&printsec=frontcover&dq=legacy+code&hl=&cd=1&source=gbs_api").

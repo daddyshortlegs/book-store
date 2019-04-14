@@ -17,6 +17,7 @@ import java.util.List;
 @SpringBootApplication
 public class BookStore {
 
+    public static final int PAGE_SIZE = 10;
     private Logger logger = LogManager.getLogger();
 
     @Autowired
@@ -34,12 +35,6 @@ public class BookStore {
     String searchLandingPage() {
         return "index";
     }
-
-    @RequestMapping("/showError")
-    String showError() {
-        return "error";
-    }
-
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     ModelAndView search(@RequestParam(value = "q", defaultValue = "") String query, @RequestParam(value = "page", defaultValue = "0") String pageNumber) {
@@ -63,7 +58,11 @@ public class BookStore {
         List<SearchResult> searchResults = searchService.search(query, pageNumber);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
-        modelAndView.addObject("totalPages", "0");
+        modelAndView.addObject("totalPages", calulcateTotalPages(searchResults));
         return modelAndView;
+    }
+
+    private String calulcateTotalPages(List<SearchResult> searchResults) {
+        return Integer.toString(searchResults.size() / PAGE_SIZE);
     }
 }
