@@ -50,4 +50,10 @@ public class GoogleBooksUrlTest {
         assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", theUrl.toString());
     }
 
+    @Test
+    public void shoulldIgnoreDodgyPageNumber_whenNotANumber() {
+        URL theUrl = GoogleBooksUrl.createSearchQuery("clean code", "NAN");
+        assertEquals("https://www.googleapis.com/books/v1/volumes?q=clean+code", theUrl.toString());
+    }
+
 }

@@ -27,9 +27,12 @@ class GoogleBooksUrl {
     }
 
     private static String addPageNumber(String pageNumber) {
-        if (pageNumber == null || pageNumber.equals("")) { return ""; }
-        int i = Integer.parseInt(pageNumber);
-        return i > 0 ? "&startIndex=" + pageNumber : "";
+        if (pageNumber == null || pageNumber.equals("")) return "";
+        try {
+            return Integer.parseInt(pageNumber) > 0 ? "&startIndex=" + pageNumber : "";
+        } catch (NumberFormatException e) {
+            return "";
+        }
     }
 
     private static String createQueryString(String query) throws UnsupportedEncodingException {
