@@ -8,6 +8,14 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 
     <title>Andy's Book Store</title>
+
+    <script type="text/javascript" async>
+        function submitQueryWithPageNumber(pageNumber) {
+            let searchForm = document.getElementById("searchForm");
+            document.getElementById("page").value = pageNumber;
+            searchForm.submit();
+        }
+    </script>
 </head>
 
 <body>

@@ -17,7 +17,7 @@ import java.util.List;
 @SpringBootApplication
 public class BookStore {
 
-    public static final int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 10;
     private Logger logger = LogManager.getLogger();
 
     @Autowired
@@ -58,6 +58,7 @@ public class BookStore {
         List<SearchResult> searchResults = searchService.search(query, pageNumber);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
+        modelAndView.addObject("query", query);
         modelAndView.addObject("totalPages", calulcateTotalPages(searchResults));
         return modelAndView;
     }

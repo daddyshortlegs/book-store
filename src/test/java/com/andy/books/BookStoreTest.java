@@ -63,6 +63,7 @@ public class BookStoreTest {
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
         assertEquals("0", model.get("totalPages"));
+        assertEquals("clean code", model.get("query"));
         assertEquals(searchResults, results);
     }
 
@@ -78,6 +79,7 @@ public class BookStoreTest {
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
         assertEquals("10", model.get("totalPages"));
+        assertEquals("clean code", model.get("query"));
         assertEquals(searchResults, results);
     }
 

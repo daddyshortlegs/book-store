@@ -2,33 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
 
 <body>
-
-<div class="jumbotron text-center">
-    <div class="container">
-        <h1>Andy's Book Store</h1>
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1>Andy's Book Store</h1>
+        </div>
     </div>
-</div>
-<div class="container">
-    <form action="/search">
-        <div class="input-group mb-3">
-            <input name="q" type="text" class="form-control" placeholder="Enter title here" aria-label="Search books" aria-describedby="button-addon2" autofocus>
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search books</button>
+
+    <form id="searchForm" action="/search">
+        <input type="hidden" id="page" name="page" value="" />
+        <div class="container">
+            <div class="input-group mb-3">
+                <input name="q" type="text" th:value="${query}" class="form-control" placeholder="Enter title here" aria-label="Search books" aria-describedby="button-addon2" autofocus>
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search books</button>
+                </div>
             </div>
         </div>
-    </form>
-</div>
 
-<div class="container">
-    <div class="row align-items-center book-spacing bg-light shadow-sm" th:each="result : ${results}">
-        <div class="col-sm-6"><a th:href="${result.link}"><img class="img-thumbnail" th:src="${result.thumbnail}" /></a></div>
-        <div class="col-sm-6">
-            <p><a th:href="${result.link}"><em th:text="${result.title}"></em></a></p>
-            <p th:text="${result.author}"></p>
-            <p th:text="${result.publisher}"></p>
+        <div class="container">
+            <div class="row align-items-center book-spacing bg-light shadow-sm" th:each="result : ${results}">
+                <div class="col-sm-6"><a th:href="${result.link}"><img class="img-thumbnail" th:src="${result.thumbnail}" /></a></div>
+                <div class="col-sm-6">
+                    <p><a th:href="${result.link}"><em th:text="${result.title}"></em></a></p>
+                    <p th:text="${result.author}"></p>
+                    <p th:text="${result.publisher}"></p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
+        <nav aria-label="Page nav">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(0)">1</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(1)">2</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(2)">3</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(3)">4</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(4)">5</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(5)">6</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(6)">7</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(7)">8</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(8)">9</a></li>
+                <li class="page-item"><a class="page-link" onclick="submitQueryWithPageNumber(9)">10</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </form>
 </body>
 </html>
