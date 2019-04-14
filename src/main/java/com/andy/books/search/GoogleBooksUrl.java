@@ -27,7 +27,7 @@ class GoogleBooksUrl {
     }
 
     private static String addPageNumber(String pageNumber) {
-        if (pageNumber == null) { return ""; }
+        if (pageNumber == null || pageNumber.equals("")) { return ""; }
         int i = Integer.parseInt(pageNumber);
         return i > 0 ? "&startIndex=" + pageNumber : "";
     }
