@@ -118,6 +118,7 @@ public class BookSearchServiceTest {
     }
 
     private void verifyWeGetBackCannedData(SearchResults searchResults) {
+        assertEquals(1441, searchResults.getTotalItems());
         List<SearchResult> searchResults1 = searchResults.getSearchResults();
         assertNotNull(searchResults1);
         assertEquals(10, searchResults1.size());

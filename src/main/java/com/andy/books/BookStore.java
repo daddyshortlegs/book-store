@@ -59,7 +59,7 @@ public class BookStore {
         modelAndView.addObject("query", query);
 
         //TODO: Clean up this mess
-        int totalPages = searchResults.getSearchResults().size() / PAGE_SIZE;
+        int totalPages = searchResults.getTotalItems() / PAGE_SIZE;
         logger.info("total pages = " + totalPages + ", currentPage = " + pageNumber);
         modelAndView.addObject("totalPages", Integer.toString(totalPages));
 

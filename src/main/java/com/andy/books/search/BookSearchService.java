@@ -30,12 +30,14 @@ public class BookSearchService implements SearchService {
     public SearchResults search(String query, String pageNumber) {
         URL theUrl = GoogleBooksUrl.createSearchQuery(query, pageNumber);
         String response = httpConnector.get(theUrl);
-        JSONArray items = getItemsFromJson(response);
-        return new SearchResults(createSearchResults(items));
+        return buildSearchResults(response);
     }
 
-    private JSONArray getItemsFromJson(String response) {
-        return toJsonObject(response).getJSONArray("items");
+    private SearchResults buildSearchResults(String response) {
+        JSONObject jsonObject = toJsonObject(response);
+        JSONArray items = jsonObject.getJSONArray("items");
+        int totalItems = jsonObject.optInt("totalItems", 0);
+        return new SearchResults(totalItems, createSearchResults(items));
     }
 
     private JSONObject toJsonObject(String response) {

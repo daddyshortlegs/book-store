@@ -46,7 +46,7 @@ public class BookStoreTest {
     public void shouldHandleSearchRequest_andReturnSomeResults() {
         List<SearchResult> results = new ArrayList<>();
         results.add(itemFromSearch("Title 1"));
-        SearchResults searchResults = new SearchResults(results);
+        SearchResults searchResults = new SearchResults(1, results);
         String pageNumber = "0";
         when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
@@ -120,7 +120,7 @@ public class BookStoreTest {
             results.add(itemFromSearch("Title " + i));
         }
 
-        return new SearchResults(results);
+        return new SearchResults(100, results);
     }
 
     private SearchResult itemFromSearch(String bookName) {
