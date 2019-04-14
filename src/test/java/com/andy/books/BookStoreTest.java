@@ -68,6 +68,10 @@ public class BookStoreTest {
         verifyBookResults(searchResults, modelAndView, pageNumber, "10");
         verifyPreviousButtonSetTo(modelAndView, "enabled");
         verifyNextButtonSetTo(modelAndView, "enabled");
+
+        Map<String, Object> model = modelAndView.getModel();
+        assertEquals("4", model.get("previousPage"));
+        assertEquals("6", model.get("nextPage"));
     }
 
     @Test
@@ -81,6 +85,9 @@ public class BookStoreTest {
         verifyBookResults(searchResults, modelAndView, pageNumber, "10");
         verifyPreviousButtonSetTo(modelAndView, "enabled");
         verifyNextButtonSetTo(modelAndView, "disabled");
+
+        Map<String, Object> model = modelAndView.getModel();
+        assertEquals("9", model.get("previousPage"));
     }
 
     @Test
