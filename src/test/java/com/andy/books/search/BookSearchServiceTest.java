@@ -2,6 +2,7 @@ package com.andy.books.search;
 
 import com.andy.books.BookSearchException;
 import com.andy.books.SearchResult;
+import com.andy.books.SearchResults;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,14 +41,14 @@ public class BookSearchServiceTest {
     @Test(expected=BookSearchException.class)
     public void shouldThrowException_whenHttpConnectorFails() throws MalformedURLException {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenThrow(BookSearchException.class);
-        service.search("legacy code", "0");
+        service.searchForIt("legacy code", "0");
     }
 
     @Test
     public void shouldSearchForLegacyCode() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("legacy code", "0");
+        SearchResults searchResults = service.searchForIt("legacy code", "0");
 
         verifyWeGetBackCannedData(searchResults);
     }
@@ -56,7 +57,7 @@ public class BookSearchServiceTest {
     public void shouldSearchForCleanCode() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("clean code", "0");
+        SearchResults searchResults = service.searchForIt("clean code", "0");
 
         verifyWeGetBackCannedData(searchResults);
     }
@@ -65,7 +66,7 @@ public class BookSearchServiceTest {
     public void shouldSearchForCleanCode_andGoToPage4() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code&startIndex=4"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("clean code", "4");
+        SearchResults searchResults = service.searchForIt("clean code", "4");
 
         verifyWeGetBackCannedData(searchResults);
     }
@@ -74,7 +75,7 @@ public class BookSearchServiceTest {
     public void shoulldIgnoreDodgyPageNumber_whenDodgy() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("clean code", "well dodgy");
+        SearchResults searchResults = service.searchForIt("clean code", "well dodgy");
 
         verifyWeGetBackCannedData(searchResults);
     }
@@ -116,11 +117,11 @@ public class BookSearchServiceTest {
         assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimitedString);
     }
 
-
-    private void verifyWeGetBackCannedData(List<SearchResult> searchResults) {
-        assertNotNull(searchResults);
-        assertEquals(10, searchResults.size());
-        SearchResult searchResult1 = searchResults.get(0);
+    private void verifyWeGetBackCannedData(SearchResults searchResults) {
+        List<SearchResult> searchResults1 = searchResults.getSearchResults();
+        assertNotNull(searchResults1);
+        assertEquals(10, searchResults1.size());
+        SearchResult searchResult1 = searchResults1.get(0);
 
         assertEquals("Working Effectively with Legacy Code", searchResult1.getTitle());
         assertEquals("Michael Feathers", searchResult1.getAuthor());
@@ -130,7 +131,7 @@ public class BookSearchServiceTest {
         assertEquals("https://play.google.com/store/books/details?id=fB6s_Z6g0gIC&source=gbs_api",
                 searchResult1.getLink());
 
-        SearchResult searchResult2 = searchResults.get(1);
+        SearchResult searchResult2 = searchResults1.get(1);
         assertEquals("Working Effectively with Legacy Code", searchResult2.getTitle());
         assertEquals("Michael C. Feathers", searchResult2.getAuthor());
         assertEquals("Prentice Hall", searchResult2.getPublisher());

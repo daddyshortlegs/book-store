@@ -2,6 +2,7 @@ package com.andy.books.search;
 
 import com.andy.books.SearchResult;
 import com.andy.books.SearchResultBuilder;
+import com.andy.books.SearchResults;
 import com.andy.books.SearchService;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +24,12 @@ public class BookSearchService implements SearchService {
 
     public BookSearchService(HttpConnector httpConnector) {
         this.httpConnector = httpConnector;
+    }
+
+    @Override
+    public SearchResults searchForIt(String query, String pageNumber) {
+        List<SearchResult> search = search(query, pageNumber);
+        return new SearchResults(search);
     }
 
     @Override
