@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
 @SpringBootApplication
 public class BookStore {
@@ -55,13 +53,13 @@ public class BookStore {
     }
 
     private ModelAndView doSearchAndDisplayResults(String query, String pageNumber) {
-        List<SearchResult> searchResults = searchService.search(query, pageNumber);
+        SearchResults searchResults = searchService.search(query, pageNumber);
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("results", searchResults);
+        modelAndView.addObject("results", searchResults.getSearchResults());
         modelAndView.addObject("query", query);
 
         //TODO: Clean up this mess
-        int totalPages = searchResults.size() / PAGE_SIZE;
+        int totalPages = searchResults.getSearchResults().size() / PAGE_SIZE;
         logger.info("total pages = " + totalPages + ", currentPage = " + pageNumber);
         modelAndView.addObject("totalPages", Integer.toString(totalPages));
 

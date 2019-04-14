@@ -43,17 +43,10 @@ public class BookStoreTest {
     }
 
     @Test
-    public void shouldHandleSearchRequest() {
-        ModelAndView modelAndView = bookStore.search("clean code", "0");
-
-        assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code", "0");
-    }
-
-    @Test
     public void shouldHandleSearchRequest_andReturnSomeResults() {
-        List<SearchResult> searchResults = new ArrayList<>();
-        searchResults.add(itemFromSearch("Title 1"));
+        List<SearchResult> results = new ArrayList<>();
+        results.add(itemFromSearch("Title 1"));
+        SearchResults searchResults = new SearchResults(results);
         String pageNumber = "0";
         when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
@@ -66,7 +59,7 @@ public class BookStoreTest {
 
     @Test
     public void shouldHandleSearchRequest_withTenPages() {
-        List<SearchResult> searchResults = createTenPagesOfBooks();
+        SearchResults searchResults = createTenPagesOfBooks();
         String pageNumber = "5";
         when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
@@ -79,7 +72,7 @@ public class BookStoreTest {
 
     @Test
     public void shouldHandleSearchRequest_andHideNextButtonWhenOnLastPage() {
-        List<SearchResult> searchResults = createTenPagesOfBooks();
+        SearchResults searchResults = createTenPagesOfBooks();
         String pageNumber = "10";
         when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
@@ -110,7 +103,7 @@ public class BookStoreTest {
         assertEquals(buttonStatus, model.get("nextStatus"));
     }
 
-    private void verifyBookResults(List<SearchResult> searchResults, ModelAndView modelAndView, String pageNumber, String totalPages) {
+    private void verifyBookResults(SearchResults searchResults, ModelAndView modelAndView, String pageNumber, String totalPages) {
         assertEquals("index", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code", pageNumber);
         Map<String, Object> model = modelAndView.getModel();
@@ -118,15 +111,16 @@ public class BookStoreTest {
         assertEquals(pageNumber, model.get("pageNumber"));
         assertEquals(totalPages, model.get("totalPages"));
         assertEquals("clean code", model.get("query"));
-        assertEquals(searchResults, results);
+        assertEquals(searchResults.getSearchResults(), results);
     }
 
-    private List<SearchResult> createTenPagesOfBooks() {
-        List<SearchResult> searchResults = new ArrayList<>();
+    private SearchResults createTenPagesOfBooks() {
+        List<SearchResult> results = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            searchResults.add(itemFromSearch("Title " + i));
+            results.add(itemFromSearch("Title " + i));
         }
-        return searchResults;
+
+        return new SearchResults(results);
     }
 
     private SearchResult itemFromSearch(String bookName) {

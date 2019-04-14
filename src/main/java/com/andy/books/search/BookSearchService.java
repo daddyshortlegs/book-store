@@ -27,17 +27,11 @@ public class BookSearchService implements SearchService {
     }
 
     @Override
-    public SearchResults searchForIt(String query, String pageNumber) {
-        List<SearchResult> search = search(query, pageNumber);
-        return new SearchResults(search);
-    }
-
-    @Override
-    public List<SearchResult> search(String query, String pageNumber) {
+    public SearchResults search(String query, String pageNumber) {
         URL theUrl = GoogleBooksUrl.createSearchQuery(query, pageNumber);
         String response = httpConnector.get(theUrl);
         JSONArray items = getItemsFromJson(response);
-        return createSearchResults(items);
+        return new SearchResults(createSearchResults(items));
     }
 
     private JSONArray getItemsFromJson(String response) {
