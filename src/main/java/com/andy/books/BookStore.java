@@ -58,19 +58,21 @@ public class BookStore {
         modelAndView.addObject("results", searchResults.getSearchResults());
         modelAndView.addObject("query", query);
 
-        //TODO: Clean up this mess
-        int totalPages = searchResults.getTotalItems() / PAGE_SIZE;
+        setupPaginationButtons(pageNumber, searchResults, modelAndView);
+        return modelAndView;
+    }
+
+    private void setupPaginationButtons(String pageNumber, SearchResults searchResults, ModelAndView modelAndView) {
+        int totalPages = calculateTotalPages(searchResults);
         logger.info("total pages = " + totalPages + ", currentPage = " + pageNumber);
         modelAndView.addObject("totalPages", Integer.toString(totalPages));
-
-        String previousStatus = Integer.parseInt(pageNumber) > 0 ? "enabled" : "disabled";
-        modelAndView.addObject("previousStatus", previousStatus);
-
-        String nextStatus = Integer.parseInt(pageNumber) < totalPages ? "enabled" : "disabled";
-        modelAndView.addObject("nextStatus", nextStatus);
-
+        modelAndView.addObject("previousStatus", Integer.parseInt(pageNumber) > 0 ? "enabled" : "disabled");
+        modelAndView.addObject("nextStatus", Integer.parseInt(pageNumber) < totalPages ? "enabled" : "disabled");
         modelAndView.addObject("pageNumber", pageNumber);
-        return modelAndView;
+    }
+
+    private int calculateTotalPages(SearchResults searchResults) {
+        return searchResults.getTotalItems() / PAGE_SIZE;
     }
 
 }
