@@ -58,13 +58,7 @@ public class BookStoreTest {
 
         ModelAndView modelAndView = bookStore.search("clean code", "0");
 
-        assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code", "0");
-        Map<String, Object> model = modelAndView.getModel();
-        List<SearchResult> results = (List<SearchResult>) model.get("results");
-        assertEquals("0", model.get("totalPages"));
-        assertEquals("clean code", model.get("query"));
-        assertEquals(searchResults, results);
+        verifyBookResults(searchResults, modelAndView, "0", "0");
     }
 
     @Test
@@ -74,13 +68,7 @@ public class BookStoreTest {
 
         ModelAndView modelAndView = bookStore.search("clean code", "5");
 
-        assertEquals("index", modelAndView.getViewName());
-        verify(searchService, times(1)).search("clean code", "5");
-        Map<String, Object> model = modelAndView.getModel();
-        List<SearchResult> results = (List<SearchResult>) model.get("results");
-        assertEquals("10", model.get("totalPages"));
-        assertEquals("clean code", model.get("query"));
-        assertEquals(searchResults, results);
+        verifyBookResults(searchResults, modelAndView, "5", "10");
     }
 
     @Test
@@ -91,6 +79,16 @@ public class BookStoreTest {
 
         assertEquals("error", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code", "0");
+    }
+
+    private void verifyBookResults(List<SearchResult> searchResults, ModelAndView modelAndView, String pageNumber, String totalPages) {
+        assertEquals("index", modelAndView.getViewName());
+        verify(searchService, times(1)).search("clean code", pageNumber);
+        Map<String, Object> model = modelAndView.getModel();
+        List<SearchResult> results = (List<SearchResult>) model.get("results");
+        assertEquals(totalPages, model.get("totalPages"));
+        assertEquals("clean code", model.get("query"));
+        assertEquals(searchResults, results);
     }
 
     private List<SearchResult> createTenPagesOfBooks() {
