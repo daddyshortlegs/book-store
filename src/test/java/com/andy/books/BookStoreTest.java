@@ -59,6 +59,8 @@ public class BookStoreTest {
         ModelAndView modelAndView = bookStore.search("clean code", "0");
 
         verifyBookResults(searchResults, modelAndView, "0", "0");
+        verifyPreviousButtonSetTo(modelAndView, "disabled");
+        verifyNextButtonSetTo(modelAndView, "enabled");
     }
 
     @Test
@@ -69,6 +71,8 @@ public class BookStoreTest {
         ModelAndView modelAndView = bookStore.search("clean code", "5");
 
         verifyBookResults(searchResults, modelAndView, "5", "10");
+        verifyPreviousButtonSetTo(modelAndView, "enabled");
+        verifyNextButtonSetTo(modelAndView, "enabled");
     }
 
     @Test
@@ -81,11 +85,22 @@ public class BookStoreTest {
         verify(searchService, times(1)).search("clean code", "0");
     }
 
+    private void verifyPreviousButtonSetTo(ModelAndView modelAndView, String buttonStatus) {
+        Map<String, Object> model = modelAndView.getModel();
+        assertEquals(buttonStatus, model.get("previousStatus"));
+    }
+
+    private void verifyNextButtonSetTo(ModelAndView modelAndView, String buttonStatus) {
+        Map<String, Object> model = modelAndView.getModel();
+        assertEquals(buttonStatus, model.get("nextStatus"));
+    }
+
     private void verifyBookResults(List<SearchResult> searchResults, ModelAndView modelAndView, String pageNumber, String totalPages) {
         assertEquals("index", modelAndView.getViewName());
         verify(searchService, times(1)).search("clean code", pageNumber);
         Map<String, Object> model = modelAndView.getModel();
         List<SearchResult> results = (List<SearchResult>) model.get("results");
+        assertEquals(pageNumber, model.get("pageNumber"));
         assertEquals(totalPages, model.get("totalPages"));
         assertEquals("clean code", model.get("query"));
         assertEquals(searchResults, results);

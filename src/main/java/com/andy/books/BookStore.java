@@ -59,6 +59,12 @@ public class BookStore {
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("results", searchResults);
         modelAndView.addObject("query", query);
+
+        String previousStatus = pageNumber.equals("0") ? "disabled" : "enabled";
+        modelAndView.addObject("previousStatus", previousStatus);
+        modelAndView.addObject("nextStatus", "enabled");
+
+        modelAndView.addObject("pageNumber", pageNumber);
         modelAndView.addObject("totalPages", calulcateTotalPages(searchResults));
         return modelAndView;
     }
