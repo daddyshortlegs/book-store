@@ -71,23 +71,13 @@ public class BookSearchServiceTest {
     }
 
     @Test
-    public void shoulldIgnoreDodgyPageNumber_whenNull() throws Exception {
+    public void shoulldIgnoreDodgyPageNumber_whenDodgy() throws Exception {
         when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
 
-        List<SearchResult> searchResults = service.search("clean code", null);
+        List<SearchResult> searchResults = service.search("clean code", "well dodgy");
 
         verifyWeGetBackCannedData(searchResults);
     }
-
-    @Test
-    public void shoulldIgnoreDodgyPageNumber_whenBlank() throws Exception {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
-
-        List<SearchResult> searchResults = service.search("clean code", "");
-
-        verifyWeGetBackCannedData(searchResults);
-    }
-
 
     @Test
     public void shouldCreateEmptyString_whenNoAuthors() {
@@ -98,7 +88,6 @@ public class BookSearchServiceTest {
 
         assertEquals("", delimitedString);
     }
-
 
     @Test
     public void shouldCreateCommaDelimtedAuthors_whenOneAuthor() {
