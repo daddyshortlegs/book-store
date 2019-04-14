@@ -71,6 +71,16 @@ public class BookSearchServiceTest {
     }
 
     @Test
+    public void shoulldIgnoreDodgyPageNumber_whenNull() throws Exception {
+        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
+
+        List<SearchResult> searchResults = service.search("clean code", null);
+
+        verifyWeGetBackCannedData(searchResults);
+    }
+
+
+    @Test
     public void shouldCreateEmptyString_whenNoAuthors() {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("title", "BDD In Action");
