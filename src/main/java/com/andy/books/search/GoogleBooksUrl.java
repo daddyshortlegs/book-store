@@ -15,15 +15,19 @@ class GoogleBooksUrl {
 
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 
-    static URL createSearchQuery(String query) {
+    static URL createSearchQuery(String query, int pageNumber) {
         URL theUrl = null;
         try {
-            theUrl = new URL(BOOK_SEARCH_URL + "?" + createQueryString(query));
+            theUrl = new URL(BOOK_SEARCH_URL + "?" + createQueryString(query) + addPageNumber(pageNumber));
         } catch (MalformedURLException e) {
             logger.error("Invalid URL");
         } catch (UnsupportedEncodingException ignored) {
         }
         return theUrl;
+    }
+
+    private static String addPageNumber(int pageNumber) {
+        return pageNumber > 0 ? "&startIndex=" + pageNumber : "";
     }
 
     private static String createQueryString(String query) throws UnsupportedEncodingException {

@@ -27,7 +27,7 @@ public class BookSearchService implements SearchService {
 
     @Override
     public List<SearchResult> search(String query) {
-        URL theUrl = GoogleBooksUrl.createSearchQuery(query);
+        URL theUrl = GoogleBooksUrl.createSearchQuery(query, 0);
         String response = httpConnector.get(theUrl);
         JSONArray items = getItemsFromJson(response);
         return createSearchResults(items);
