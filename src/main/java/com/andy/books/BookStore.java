@@ -60,16 +60,19 @@ public class BookStore {
         modelAndView.addObject("results", searchResults);
         modelAndView.addObject("query", query);
 
-        String previousStatus = pageNumber.equals("0") ? "disabled" : "enabled";
+        //TODO: Clean up this mess
+        int totalPages = searchResults.size() / PAGE_SIZE;
+        logger.info("total pages = " + totalPages + ", currentPage = " + pageNumber);
+        modelAndView.addObject("totalPages", Integer.toString(totalPages));
+
+        String previousStatus = Integer.parseInt(pageNumber) > 0 ? "enabled" : "disabled";
         modelAndView.addObject("previousStatus", previousStatus);
-        modelAndView.addObject("nextStatus", "enabled");
+
+        String nextStatus = Integer.parseInt(pageNumber) < totalPages ? "enabled" : "disabled";
+        modelAndView.addObject("nextStatus", nextStatus);
 
         modelAndView.addObject("pageNumber", pageNumber);
-        modelAndView.addObject("totalPages", calulcateTotalPages(searchResults));
         return modelAndView;
     }
 
-    private String calulcateTotalPages(List<SearchResult> searchResults) {
-        return Integer.toString(searchResults.size() / PAGE_SIZE);
-    }
 }

@@ -54,25 +54,40 @@ public class BookStoreTest {
     public void shouldHandleSearchRequest_andReturnSomeResults() {
         List<SearchResult> searchResults = new ArrayList<>();
         searchResults.add(itemFromSearch("Title 1"));
-        when(searchService.search("clean code", "0")).thenReturn(searchResults);
+        String pageNumber = "0";
+        when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
-        ModelAndView modelAndView = bookStore.search("clean code", "0");
+        ModelAndView modelAndView = bookStore.search("clean code", pageNumber);
 
-        verifyBookResults(searchResults, modelAndView, "0", "0");
+        verifyBookResults(searchResults, modelAndView, pageNumber, "0");
         verifyPreviousButtonSetTo(modelAndView, "disabled");
-        verifyNextButtonSetTo(modelAndView, "enabled");
+        verifyNextButtonSetTo(modelAndView, "disabled");
     }
 
     @Test
     public void shouldHandleSearchRequest_withTenPages() {
         List<SearchResult> searchResults = createTenPagesOfBooks();
-        when(searchService.search("clean code", "5")).thenReturn(searchResults);
+        String pageNumber = "5";
+        when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
 
-        ModelAndView modelAndView = bookStore.search("clean code", "5");
+        ModelAndView modelAndView = bookStore.search("clean code", pageNumber);
 
-        verifyBookResults(searchResults, modelAndView, "5", "10");
+        verifyBookResults(searchResults, modelAndView, pageNumber, "10");
         verifyPreviousButtonSetTo(modelAndView, "enabled");
         verifyNextButtonSetTo(modelAndView, "enabled");
+    }
+
+    @Test
+    public void shouldHandleSearchRequest_andHideNextButtonWhenOnLastPage() {
+        List<SearchResult> searchResults = createTenPagesOfBooks();
+        String pageNumber = "10";
+        when(searchService.search("clean code", pageNumber)).thenReturn(searchResults);
+
+        ModelAndView modelAndView = bookStore.search("clean code", pageNumber);
+
+        verifyBookResults(searchResults, modelAndView, pageNumber, "10");
+        verifyPreviousButtonSetTo(modelAndView, "enabled");
+        verifyNextButtonSetTo(modelAndView, "disabled");
     }
 
     @Test
