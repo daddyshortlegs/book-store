@@ -62,6 +62,15 @@ public class BookSearchServiceTest {
     }
 
     @Test
+    public void shouldSearchForCleanCode_andGoToPage4() throws Exception {
+        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code&startIndex=4"))).thenReturn(loadCannedJson());
+
+        List<SearchResult> searchResults = service.search("clean code", "4");
+
+        verifyWeGetBackCannedData(searchResults);
+    }
+
+    @Test
     public void shouldCreateEmptyString_whenNoAuthors() {
         JSONObject volumeInfo = new JSONObject();
         volumeInfo.put("title", "BDD In Action");
