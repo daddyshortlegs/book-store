@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,9 +16,10 @@ import java.util.stream.IntStream;
 class BookJsonUnmarshaller {
     SearchResults buildSearchResults(String response) {
         JSONObject jsonObject = toJsonObject(response);
-        JSONArray items = jsonObject.getJSONArray("items");
-        int totalItems = jsonObject.optInt("totalItems", 0);
-        return new SearchResults(totalItems, createSearchResults(items));
+        JSONArray items = jsonObject.optJSONArray("items");
+        if (items == null) return new SearchResults(0, Collections.emptyList());
+
+        return new SearchResults(jsonObject.optInt("totalItems", 0), createSearchResults(items));
     }
 
     private JSONObject toJsonObject(String response) {
