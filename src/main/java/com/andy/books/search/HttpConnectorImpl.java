@@ -16,7 +16,7 @@ import java.net.URL;
 @Component
 public class HttpConnectorImpl implements HttpConnector {
 
-    private Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger();
 
     @Override
     public String get(URL theUrl) {

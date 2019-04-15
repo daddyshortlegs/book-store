@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookStore {
 
     private static final int PAGE_SIZE = 10;
-    private Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger();
 
     @Autowired
     private final SearchService searchService;

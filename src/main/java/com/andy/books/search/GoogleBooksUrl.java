@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 
 class GoogleBooksUrl {
 
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     private static final String BOOK_SEARCH_URL = "https://www.googleapis.com/books/v1/volumes";
 

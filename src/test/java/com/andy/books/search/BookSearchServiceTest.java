@@ -4,8 +4,6 @@ import com.andy.books.BookSearchException;
 import com.andy.books.SearchResult;
 import com.andy.books.SearchResults;
 import org.apache.commons.io.IOUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

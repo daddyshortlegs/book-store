@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class BookJsonUnmarshallerTest {
 
-    BookJsonUnmarshaller bookJsonUnmarshaller;
+    private BookJsonUnmarshaller bookJsonUnmarshaller;
 
     @Before
     public void setup() {
