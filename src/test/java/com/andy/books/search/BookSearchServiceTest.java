@@ -80,41 +80,10 @@ public class BookSearchServiceTest {
         verifyWeGetBackCannedData(searchResults);
     }
 
-    @Test
-    public void shouldCreateEmptyString_whenNoAuthors() {
-        JSONObject volumeInfo = new JSONObject();
-        volumeInfo.put("title", "BDD In Action");
-
-        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
-
-        assertEquals("", delimitedString);
-    }
-
-    @Test
-    public void shouldCreateCommaDelimtedAuthors_whenOneAuthor() {
-        JSONArray authors = new JSONArray();
-        authors.put("Uncle Bob");
-        JSONObject volumeInfo = new JSONObject();
-        volumeInfo.put("authors", authors);
-
-        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
-
-        assertEquals("Uncle Bob", delimitedString);
-    }
-
-    @Test
-    public void shouldCreateCommaDelimtedAuthors_whenMoreThanOneAuthor() {
-        JSONArray authors = new JSONArray();
-        authors.put("Erich Gamma");
-        authors.put("Richard Helm");
-        authors.put("Ralph Johnson");
-        authors.put("John Vlissides");
-        JSONObject volumeInfo = new JSONObject();
-        volumeInfo.put("authors", authors);
-
-        String delimitedString = service.getAuthorsOrEmptyString(volumeInfo);
-
-        assertEquals("Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", delimitedString);
+    private String loadCannedJson() throws URISyntaxException, IOException {
+        URL resource = getClass().getResource("/legacy_code.json");
+        FileInputStream fileInputStream = new FileInputStream(new File(resource.toURI()));
+        return IOUtils.toString(fileInputStream, StandardCharsets.UTF_8.name());
     }
 
     private void verifyWeGetBackCannedData(SearchResults searchResults) {
@@ -140,11 +109,5 @@ public class BookSearchServiceTest {
                 searchResult2.getThumbnail());
         assertEquals("http://books.google.co.uk/books?id=vlo_nWophSYC&dq=legacy+code&hl=&source=gbs_api",
                 searchResult2.getLink());
-    }
-
-    private String loadCannedJson() throws URISyntaxException, IOException {
-        URL resource = getClass().getResource("/legacy_code.json");
-        FileInputStream fileInputStream = new FileInputStream(new File(resource.toURI()));
-        return IOUtils.toString(fileInputStream, StandardCharsets.UTF_8.name());
     }
 }
