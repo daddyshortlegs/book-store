@@ -21,8 +21,8 @@
 
         <div class="container">
             <div class="row align-items-center book-spacing bg-light shadow-sm" th:each="result : ${results}">
-                <div class="col-sm-6"><a th:href="${result.link}"><img class="img-thumbnail" th:src="${result.thumbnail}" /></a></div>
-                <div class="col-sm-6">
+                <a th:href="${result.link}"><img class="pull-left mr-2" th:src="${result.thumbnail}" /></a>
+                <div class="mr-2">
                     <p><a th:href="${result.link}"><em th:text="${result.title}"></em></a></p>
                     <p th:text="${result.author}"></p>
                     <p th:text="${result.publisher}"></p>
