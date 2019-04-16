@@ -16,3 +16,8 @@
 .book-info {
     margin-left: 20px;
 }
+
+a.title, a.title:hover, a.title:active, a.title:visited {
+    color: white;
+    text-decoration: none;
+}
