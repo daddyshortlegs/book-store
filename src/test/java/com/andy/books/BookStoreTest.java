@@ -99,6 +99,18 @@ public class BookStoreTest {
         verify(searchService, times(1)).search("clean code", "0");
     }
 
+    @Test
+    public void shouldShowFirstPage_whenPageNumberIsNotValid() {
+        String invalidPageNumber = "not-valid";
+        when(searchService.search(eq("clean code"), anyString())).thenReturn(createTenPagesOfBooks());
+
+        ModelAndView modelAndView = bookStore.search("clean code", invalidPageNumber);
+
+        assertEquals("index", modelAndView.getViewName());
+        verify(searchService, times(1)).search("clean code", "0");
+    }
+
+
     private void verifyPreviousButtonSetTo(ModelAndView modelAndView, String buttonStatus) {
         Map<String, Object> model = modelAndView.getModel();
         assertEquals(buttonStatus, model.get("previousStatus"));
