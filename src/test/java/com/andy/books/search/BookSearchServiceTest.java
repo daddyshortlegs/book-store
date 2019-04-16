@@ -26,6 +26,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class BookSearchServiceTest {
 
+    private static final String VOLUMES_URL = "https://www.googleapis.com/books/v1/volumes";
     private BookSearchService service;
 
     @Mock
@@ -38,13 +39,13 @@ public class BookSearchServiceTest {
 
     @Test(expected=BookSearchException.class)
     public void shouldThrowException_whenHttpConnectorFails() throws MalformedURLException {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenThrow(BookSearchException.class);
+        when(httpConnector.get(new URL(VOLUMES_URL + "?q=legacy+code"))).thenThrow(BookSearchException.class);
         service.search("legacy code", "0");
     }
 
     @Test
     public void shouldSearchForLegacyCode() throws Exception {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=legacy+code"))).thenReturn(loadCannedJson());
+        when(httpConnector.get(new URL(VOLUMES_URL + "?q=legacy+code"))).thenReturn(loadCannedJson());
 
         SearchResults searchResults = service.search("legacy code", "0");
 
@@ -52,17 +53,8 @@ public class BookSearchServiceTest {
     }
 
     @Test
-    public void shouldSearchForCleanCode() throws Exception {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
-
-        SearchResults searchResults = service.search("clean code", "0");
-
-        verifyWeGetBackCannedData(searchResults);
-    }
-
-    @Test
     public void shouldSearchForCleanCode_andGoToPage4() throws Exception {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code&startIndex=4"))).thenReturn(loadCannedJson());
+        when(httpConnector.get(new URL(VOLUMES_URL + "?q=clean+code&startIndex=4"))).thenReturn(loadCannedJson());
 
         SearchResults searchResults = service.search("clean code", "4");
 
@@ -71,7 +63,7 @@ public class BookSearchServiceTest {
 
     @Test
     public void shoulldIgnoreDodgyPageNumber_whenDodgy() throws Exception {
-        when(httpConnector.get(new URL("https://www.googleapis.com/books/v1/volumes?q=clean+code"))).thenReturn(loadCannedJson());
+        when(httpConnector.get(new URL(VOLUMES_URL + "?q=clean+code"))).thenReturn(loadCannedJson());
 
         SearchResults searchResults = service.search("clean code", "well dodgy");
 
