@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <nav aria-label="Page nav">
+        <nav aria-label="Page nav" th:if="${previousStatus != null}">
             <ul class="pagination justify-content-center">
                 <li class="page-item" th:classappend="${previousStatus}">
                     <a class="page-link" th:onclick="submitQueryWithPageNumber([[${previousPage}]])" tabindex="-1">Previous</a>
